@@ -235,22 +235,78 @@ body.noscroll{overflow:hidden}
 .pop-img img{transform:scale(1.3);transform-origin:50% 14%}
 @media(max-width:640px){.pop-img img{transform:none}}
 .pop-img{overflow:hidden}
+
+/* studio booking page */
+nav.main a.cur{color:var(--ink)}
+.hero.small{min-height:0;padding:96px 0 72px}
+.hero.small h1{font-size:clamp(46px,9vw,110px)}
+.facts{border-block:1px solid var(--line);background:var(--panel)}
+.facts ul{list-style:none;display:grid;grid-template-columns:repeat(4,1fr)}
+.facts li{padding:26px 22px;border-right:1px solid var(--line)}
+.facts li:last-child{border:0}
+.facts b{display:block;font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(22px,2.8vw,32px);text-transform:uppercase;letter-spacing:.03em;color:var(--accent);line-height:1.05}
+.facts span{display:block;margin-top:6px;font-size:13px;color:var(--muted)}
+.bk{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:40px;align-items:start}
+.bstep{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:26px;margin-bottom:16px;transition:border-color .2s}
+.bstep.bad{border-color:#ff8a7a}
+.bstep h3{font-size:clamp(24px,3.4vw,32px);margin-bottom:18px;display:flex;align-items:center;gap:12px}
+.bstep h3 i{font-style:normal;display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:var(--accent);color:#0B0A09;font-size:17px;flex:none}
+.hint{margin-top:14px;font-size:13px;color:var(--muted)}
+.picks{display:flex;flex-wrap:wrap;gap:10px}
+.dates{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.pick{background:transparent;border:1px solid #3a3631;color:var(--ink);padding:13px 18px;border-radius:12px;font:inherit;font-weight:600;font-size:15px;cursor:pointer;transition:.15s}
+.pick:hover:not(:disabled){border-color:var(--accent)}
+.pick.sel{background:var(--accent);border-color:var(--accent);color:#0B0A09}
+.pick:disabled{opacity:.3;cursor:not-allowed}
+.pick.date{display:flex;flex-direction:column;align-items:center;gap:2px;padding:14px 8px;position:relative}
+.pick.date .dw{font-size:12px;letter-spacing:.16em;text-transform:uppercase;opacity:.8}
+.pick.date b{font-family:'Anton',sans-serif;font-weight:400;font-size:38px;line-height:1}
+.pick.date .dm{font-size:12px;opacity:.8}
+.pick.date em{position:absolute;top:6px;right:8px;font-style:normal;font-size:10px;letter-spacing:.1em;text-transform:uppercase}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.field label{font-weight:600;font-size:14px}
+.field .req{color:var(--accent)}.field .optl{color:var(--dim);font-weight:500}
+.bk input,.bk select,.bk textarea{font:inherit;font-size:16px;padding:14px;border:1px solid #3a3631;border-radius:12px;background:#0a0908;color:var(--ink);width:100%;appearance:none;-webkit-appearance:none}
+.bk select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9' fill='none'%3E%3Cpath d='M1 1l6 6 6-6' stroke='%23A19B90' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:40px}
+.bk textarea{min-height:100px;resize:vertical}
+.bk input:focus,.bk select:focus,.bk textarea:focus{outline:0;border-color:var(--accent)}
+.field .err{display:none;color:#ff8a7a;font-size:13px;font-weight:600}
+.field.bad .err{display:block}.field.bad input,.field.bad select{border-color:#ff8a7a}
+.bk-sum{position:sticky;top:90px}
+.sum-card{background:var(--panel);border:1px solid #3a3530;border-radius:12px;padding:26px}
+.sum-card dl{margin:16px 0 4px}
+.sum-card dl div{display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-bottom:1px solid var(--line);font-size:15px}
+.sum-card dt{color:var(--muted)}
+.sum-card dd{text-align:right;font-weight:600}
+.total{display:flex;align-items:baseline;justify-content:space-between;margin:18px 0 20px}
+.total span{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.total b{font-family:'Anton',sans-serif;font-weight:400;font-size:54px;line-height:1;color:var(--accent)}
+.sum-card .btn{width:100%}
+.bk-err{margin-top:12px;color:#ff8a7a;font-size:14px;font-weight:600}
+.fine{margin-top:14px;font-size:12px;color:var(--dim)}
+.bk-out{margin-top:30px;background:var(--panel);border:1px solid var(--accent);border-radius:12px;padding:26px;max-width:720px}
+.bk-out h3{font-size:30px;margin-bottom:14px}
+.bk-out pre{white-space:pre-wrap;font:inherit;font-size:15px;background:#0a0908;border:1px dashed #3a3631;border-radius:10px;padding:16px;margin-bottom:14px}
+.bk-out p{color:var(--muted);margin-bottom:18px}
+@media(max-width:900px){.bk{grid-template-columns:1fr}.bk-sum{position:static}.facts ul{grid-template-columns:1fr 1fr}.facts li:nth-child(2){border-right:0}.facts li:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+@media(max-width:600px){.dates{grid-template-columns:1fr 1fr}.row2{grid-template-columns:1fr}.bstep{padding:20px}.hero.small{padding:64px 0 50px}}
 </style></head>
 <body>
 <header class="site"><div class="wrap"><div class="bar">
 <a class="logo" href="#top" aria-label="The Audio Box"><span class="badge"><small>THE</small>AUDIO<br>BOX</span><span class="wm">The Audio Box</span></a>
-<nav class="main"><a href="#journal">Blog</a><a href="#spotlight">Spotlight</a><a href="#gallery">Gallery</a><a href="#join">Join</a></nav>
+<nav class="main"><a href="#studio">Studio</a><a href="#journal">Blog</a><a href="#spotlight">Spotlight</a><a href="#gallery">Gallery</a><a href="#join">Join</a></nav>
 <a class="ig" data-insta href="https://instagram.com/cubs.x" target="_blank" rel="noopener" aria-label="Instagram @cubs.x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg><span class="t">@cubs.x</span></a>
 <button class="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </div></div>
-<div class="drawer"><a href="#journal">Blog</a><a href="#spotlight">Spotlight</a><a href="#gallery">Gallery</a><a href="#join">Join the network</a></div></header>
+<div class="drawer"><a href="#studio">Book the studio</a><a href="#journal">Blog</a><a href="#spotlight">Spotlight</a><a href="#gallery">Gallery</a><a href="#join">Join the network</a></div></header>
 
 <main id="top">
 <section class="hero"><div class="wrap"><div>
 <span class="eyebrow">Artist/Producer</span>
 <h1>The Audio<br><span>Box</span></h1>
 <ul class="offer"><li>Studio Sessions</li><li>Mixing &amp; Mastering</li><li>Contact To Collab</li></ul>
-<div class="cta-row"><a class="btn" href="#join">Join the network</a><a class="btn ghost" data-insta href="https://instagram.com/cubs.x" target="_blank" rel="noopener">Follow @cubs.x</a></div>
+<div class="cta-row"><a class="btn" href="#studio">Book studio time</a><a class="btn ghost" href="#join">Join the network</a><a class="btn ghost" data-insta href="https://instagram.com/cubs.x" target="_blank" rel="noopener">Follow @cubs.x</a></div>
 </div>
 </div></section>
 
@@ -301,19 +357,67 @@ body.noscroll{overflow:hidden}
 </main>
 <div id="postView" hidden><main class="postpage"><div class="wrap"><a class="backlink" href="#journal">← Back to the blog</a><article class="article" id="article"></article>
 <div class="postcta"><h2>Tap in</h2><p>Studio sessions, mixing and mastering, and always open to collab.</p><a class="btn" href="#join">Join the network</a></div></div></main></div>
+<div id="studioView" hidden><main class="studiopage">
+<section class="hero small"><div class="wrap"><div>
+<span class="eyebrow">The Audio Box Recording Studios</span>
+<h1>Book studio <span>time</span></h1>
+<p class="lead">Pick a Sunday, choose your hours and send your request. Your slot is confirmed once we reply.</p>
+</div></div></section>
+<div class="facts"><div class="wrap"><ul>
+<li><b>Every other Sunday</b><span>Fortnightly sessions</span></li>
+<li><b>3pm to 11pm</b><span>Your hours, within the day</span></li>
+<li><b>&pound;25 / hour</b><span>Simple flat rate</span></li>
+<li><b>6 hours max</b><span>Per session</span></li>
+</ul></div></div>
+<section class="s" id="booking"><div class="wrap">
+<div class="sh"><h2>Plan your session</h2><p>Four quick steps. You'll see the total as you go.</p></div>
+<form id="bookForm" class="bk" novalidate>
+<div class="bk-main">
+<div class="bstep" id="stDate"><h3><i>1</i> Pick a Sunday</h3><div class="dates" id="dates"></div><p class="hint">Sessions run every other Sunday.</p></div>
+<div class="bstep" id="stHours"><h3><i>2</i> How long?</h3><div class="picks" id="hours"></div><p class="hint">&pound;25 per hour, up to 6 hours.</p></div>
+<div class="bstep" id="stTime"><h3><i>3</i> Start time</h3><div class="picks" id="times"></div><p class="hint" id="timeHint"></p></div>
+<div class="bstep" id="stDetails"><h3><i>4</i> Your details</h3>
+<div class="row2"><div class="field"><label>Name <span class="req">*</span></label><input name="name" required autocomplete="name"><span class="err">Please add your name</span></div>
+<div class="field"><label>Phone or WhatsApp <span class="req">*</span></label><input name="contact" required autocomplete="tel"><span class="err">Please add a contact number</span></div></div>
+<div class="field"><label>Session type <span class="optl">(optional)</span></label><select name="type"><option value="">Not sure yet</option><option>Recording</option><option>Writing / production</option><option>Mixing</option><option>Mastering</option><option>Something else</option></select></div>
+<div class="field"><label>What are you working on? <span class="optl">(optional)</span></label><textarea name="notes" placeholder="A few words helps me prepare"></textarea></div>
+</div>
+</div>
+<aside class="bk-sum"><div class="sum-card">
+<span class="eyebrow">Your session</span>
+<dl><div><dt>Date</dt><dd id="sumDate"></dd></div><div><dt>Time</dt><dd id="sumTime"></dd></div><div><dt>Length</dt><dd id="sumLen"></dd></div><div><dt>Rate</dt><dd id="sumRate"></dd></div></dl>
+<div class="total"><span>Total</span><b id="sumTotal">&pound;0</b></div>
+<button class="btn" type="submit">Send booking request</button>
+<p class="bk-err" id="bkErr" hidden></p>
+<p class="fine">This sends a request, it doesn't reserve the slot until we confirm it with you.</p>
+</div></aside>
+</form>
+<div class="bk-out" id="bkOut" hidden><h3>Your request is ready</h3><pre id="bkMsg"></pre><p id="bkNote"></p>
+<div class="cta-row"><button class="btn" type="button" id="bkCopy">Copy request</button><a class="btn ghost" id="bkIg" data-insta href="https://instagram.com/cubs.x" target="_blank" rel="noopener">Open Instagram @cubs.x</a></div></div>
+</div></section>
+</main></div>
 
 <footer class="site"><div class="wrap">
 <div class="big" aria-hidden="true">The Audio Box</div>
 <div class="foot"><div class="links"><a data-insta href="https://instagram.com/cubs.x" target="_blank" rel="noopener">Instagram @cubs.x</a><a data-linktree href="https://linktr.ee/cubsx" target="_blank" rel="noopener">Linktree</a><a href="#join">Join</a></div>
 <div>© <span data-year></span> The Audio Box</div></div></div></footer>
-<script>
-window.POST_HREF=function(id){return '#post/'+id};
-</script><script>/* ============ EDIT ME ============ */
+<script>window.POST_HREF=function(id){return "#post/"+id};</script><script>/* ============ EDIT ME ============ */
 const CONFIG = {
   TELEGRAM_URL: '',            // paste your Audio Box Telegram invite link here
-  SHEET_URL: '',               // optional: Google Apps Script web-app URL that saves quiz answers to a Google Sheet
+  SHEET_URL: 'https://script.google.com/macros/s/AKfycbzItj3OzGBJclFA04VLRt7EXbI38aXcWUnS5SiBgtQbqr7ONWF7pG1S8VI6RH1NSDM/exec',               // optional: Google Apps Script web-app URL that saves quiz answers to a Google Sheet
   INSTAGRAM_URL: 'https://instagram.com/cubs.x',
   LINKTREE_URL: 'https://linktr.ee/cubsx',
+  // ---- Studio booking ----
+  BOOKING: {
+    WHATSAPP: '',              // digits only, e.g. 447123456789. Until set, the request is shown to copy and send via Instagram.
+    ANCHOR_SUNDAY: '2026-11-08', // one bookable Sunday; every 14 days from this date is bookable
+    SHOW_DATES: 6,             // how many upcoming Sundays to offer
+    START_HOUR: 15,            // 3pm
+    END_HOUR: 23,              // 11pm
+    MAX_HOURS: 6,
+    RATE: 25,                  // pounds per hour
+    BLOCKED_DATES: []          // e.g. ['2026-11-22'] to show a Sunday as already booked
+  },
   SIGNOFF: 'AZACUB to wherever I end up.'
 };
 
@@ -459,13 +563,77 @@ if (document.body.dataset.page === 'post') renderArticle(new URLSearchParams(loc
   wrap.addEventListener('click', e => { if (e.target === wrap || e.target.closest('.pop-x,.pop-later')) close(); else if (e.target.closest('a.btn')) { try { sessionStorage.setItem('ab_pop', '1'); } catch (x) {} } });
   setTimeout(open, 1200);
 })();
+
+// ---------- studio booking ----------
+(function () {
+  const form = document.getElementById('bookForm'); if (!form) return;
+  const B = CONFIG.BOOKING, S = { date: null, hours: null, start: null };
+  const hr = h => (h % 12 || 12) + (h < 12 ? 'am' : 'pm');
+  const iso = d => d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+  const money = n => '£' + n;
+  const $ = id => document.getElementById(id);
+  const today = new Date(); today.setHours(0, 0, 0, 0);
+  const anchor = new Date(B.ANCHOR_SUNDAY + 'T12:00:00'); anchor.setHours(0, 0, 0, 0);
+  const dates = [];
+  for (let k = 0; dates.length < B.SHOW_DATES && k < 400; k++) { const d = new Date(anchor); d.setDate(d.getDate() + 14 * k); if (d > today) dates.push(d); }
+  const longDate = d => d.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+
+  $('dates').innerHTML = dates.map(d => {
+    const blocked = B.BLOCKED_DATES.includes(iso(d));
+    return `<button type="button" class="pick date" data-iso="${iso(d)}" ${blocked ? 'disabled' : ''}>
+      <span class="dw">${d.toLocaleDateString('en-GB', { weekday: 'short' })}</span><b>${d.getDate()}</b>
+      <span class="dm">${d.toLocaleDateString('en-GB', { month: 'short' })} ${d.getFullYear()}</span>${blocked ? '<em>Booked</em>' : ''}</button>`;
+  }).join('');
+  $('hours').innerHTML = Array.from({ length: B.MAX_HOURS }, (_, i) => `<button type="button" class="pick" data-h="${i + 1}">${i + 1} hr${i ? 's' : ''}</button>`).join('');
+  $('times').innerHTML = Array.from({ length: B.END_HOUR - B.START_HOUR }, (_, i) => `<button type="button" class="pick" data-t="${B.START_HOUR + i}">${hr(B.START_HOUR + i)}</button>`).join('');
+
+  function clearBad(step) { const el = document.getElementById(step); if (el) el.classList.remove('bad'); }
+  function paint() {
+    document.querySelectorAll('#dates .pick').forEach(b => b.classList.toggle('sel', b.dataset.iso === S.date));
+    document.querySelectorAll('#hours .pick').forEach(b => b.classList.toggle('sel', +b.dataset.h === S.hours));
+    document.querySelectorAll('#times .pick').forEach(b => {
+      const t = +b.dataset.t; b.disabled = !S.hours || t + S.hours > B.END_HOUR; b.classList.toggle('sel', t === S.start);
+    });
+    $('timeHint').textContent = S.hours ? `Sessions must finish by ${hr(B.END_HOUR)}.` : 'Choose how long first, then your start time.';
+    const end = S.start != null && S.hours ? S.start + S.hours : null;
+    $('sumDate').textContent = S.date ? longDate(new Date(S.date + 'T12:00:00')) : 'Not chosen';
+    $('sumTime').textContent = end ? `${hr(S.start)} to ${hr(end)}` : 'Not chosen';
+    $('sumLen').textContent = S.hours ? `${S.hours} hour${S.hours > 1 ? 's' : ''}` : 'Not chosen';
+    $('sumRate').textContent = money(B.RATE) + ' per hour';
+    $('sumTotal').textContent = S.hours ? money(S.hours * B.RATE) : money(0);
+  }
+  $('dates').addEventListener('click', e => { const b = e.target.closest('.pick'); if (!b || b.disabled) return; S.date = b.dataset.iso; clearBad('stDate'); paint(); });
+  $('hours').addEventListener('click', e => { const b = e.target.closest('.pick'); if (!b) return; S.hours = +b.dataset.h; if (S.start != null && S.start + S.hours > B.END_HOUR) S.start = null; clearBad('stHours'); paint(); });
+  $('times').addEventListener('click', e => { const b = e.target.closest('.pick'); if (!b || b.disabled) return; S.start = +b.dataset.t; clearBad('stTime'); paint(); });
+  form.addEventListener('input', e => { const f = e.target.closest('.field'); if (f && e.target.value.trim()) f.classList.remove('bad'); });
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const miss = [];
+    [['stDate', S.date, 'a Sunday'], ['stHours', S.hours, 'how long'], ['stTime', S.start != null, 'a start time']].forEach(([id, ok, label]) => { document.getElementById(id).classList.toggle('bad', !ok); if (!ok) miss.push(label); });
+    form.querySelectorAll('[required]').forEach(i => { const bad = !i.value.trim(); i.closest('.field').classList.toggle('bad', bad); if (bad) miss.push(i.name === 'name' ? 'your name' : 'your contact details'); });
+    const err = $('bkErr');
+    if (miss.length) { err.textContent = 'Please add: ' + miss.join(', ') + '.'; err.hidden = false; const first = form.querySelector('.bad'); if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
+    err.hidden = true;
+    const d = Object.fromEntries(new FormData(form)), end = S.start + S.hours;
+    const msg = `Hi, I'd like to request a studio session at The Audio Box.\n\nDate: ${longDate(new Date(S.date + 'T12:00:00'))}\nTime: ${hr(S.start)} to ${hr(end)} (${S.hours} hour${S.hours > 1 ? 's' : ''})\nTotal: ${money(S.hours * B.RATE)} (${money(B.RATE)} per hour)\nSession type: ${d.type || 'Not sure yet'}\nName: ${d.name.trim()}\nContact: ${d.contact.trim()}\nNotes: ${(d.notes || '').trim() || '-'}`;
+    const out = $('bkOut'); $('bkMsg').textContent = msg; out.hidden = false;
+    if (B.WHATSAPP) { window.open('https://wa.me/' + B.WHATSAPP + '?text=' + encodeURIComponent(msg), '_blank'); $('bkNote').textContent = 'WhatsApp is opening with your request ready to send. Your slot is confirmed once we reply.'; $('bkIg').hidden = true; }
+    else { $('bkNote').textContent = 'Copy your request and send it to us on Instagram. Your slot is confirmed once we reply.'; $('bkIg').hidden = false; }
+    out.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+  $('bkCopy').addEventListener('click', () => { const t = $('bkMsg').textContent; const done = () => { $('bkCopy').textContent = 'Copied'; setTimeout(() => $('bkCopy').textContent = 'Copy request', 1800); };
+    if (navigator.clipboard) navigator.clipboard.writeText(t).then(done, () => {}); else { const r = document.createRange(); r.selectNodeContents($('bkMsg')); const s = getSelection(); s.removeAllRanges(); s.addRange(r); done(); } });
+  paint();
+})();
 </script><script>
 (function(){
- var main=document.getElementById('top'),pv=document.getElementById('postView');
+ var main=document.getElementById('top'),pv=document.getElementById('postView'),sv=document.getElementById('studioView');
  function route(){
-  var m=location.hash.match(/^#post\/(.+)$/);
-  if(m){main.hidden=true;pv.hidden=false;pv.querySelector('#article').id='article';renderArticle(decodeURIComponent(m[1]));window.scrollTo(0,0);}
-  else{var wasPost=!pv.hidden;main.hidden=false;pv.hidden=true;if(wasPost){var t=document.getElementById(location.hash.slice(1));if(t)t.scrollIntoView();else window.scrollTo(0,0);}document.title='The Audio Box';}
+  var h=location.hash,m=h.match(/^#post\/(.+)$/),was=!pv.hidden||!sv.hidden;
+  if(m){main.hidden=true;sv.hidden=true;pv.hidden=false;renderArticle(decodeURIComponent(m[1]));window.scrollTo(0,0);}
+  else if(h==='#studio'){main.hidden=true;pv.hidden=true;sv.hidden=false;document.title='Book the Studio | The Audio Box';window.scrollTo(0,0);}
+  else{main.hidden=false;pv.hidden=true;sv.hidden=true;document.title='The Audio Box';if(was){var t=document.getElementById(h.slice(1));if(t)t.scrollIntoView();else window.scrollTo(0,0);}}
  }
  window.addEventListener('hashchange',route);route();
 })();
