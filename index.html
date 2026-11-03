@@ -393,7 +393,7 @@ nav.main a.cur{color:var(--ink)}
 </div></aside>
 </form>
 <div class="bk-out" id="bkOut" hidden><h3>Your request is ready</h3><pre id="bkMsg"></pre><p id="bkNote"></p>
-<div class="cta-row"><button class="btn" type="button" id="bkCopy">Copy request</button><a class="btn ghost" id="bkIg" data-insta href="https://instagram.com/theaudiobox_" target="_blank" rel="noopener">Open Instagram @theaudiobox_</a></div></div>
+<div class="cta-row"><a class="btn" id="bkSms" href="#" hidden>Text request</a><button class="btn ghost" type="button" id="bkCopy">Copy request</button><a class="btn ghost" id="bkIg" data-insta href="https://instagram.com/theaudiobox_" target="_blank" rel="noopener">Open Instagram @theaudiobox_</a></div></div>
 </div></section>
 </main></div>
 
@@ -409,6 +409,7 @@ const CONFIG = {
   LINKTREE_URL: 'https://linktr.ee/cubsx',
   // ---- Studio booking ----
   BOOKING: {
+    TEXT_NUMBER: '+447742012353', // studio mobile (SMS). Requests open the phone's messages app with the text ready.
     WHATSAPP: '',              // digits only, e.g. 447123456789. Until set, the request is shown to copy and send via Instagram.
     ANCHOR_SUNDAY: '2026-11-08', // one bookable Sunday; every 14 days from this date is bookable
     SHOW_DATES: 6,             // how many upcoming Sundays to offer
@@ -618,8 +619,15 @@ if (document.body.dataset.page === 'post') renderArticle(new URLSearchParams(loc
     const d = Object.fromEntries(new FormData(form)), end = S.start + S.hours;
     const msg = `Hi, I'd like to request a studio session at The Audio Box.\n\nDate: ${longDate(new Date(S.date + 'T12:00:00'))}\nTime: ${hr(S.start)} to ${hr(end)} (${S.hours} hour${S.hours > 1 ? 's' : ''})\nTotal: ${money(S.hours * B.RATE)} (${money(B.RATE)} per hour)\nSession type: ${d.type || 'Not sure yet'}\nName: ${d.name.trim()}\nContact: ${d.contact.trim()}\nNotes: ${(d.notes || '').trim() || '-'}`;
     const out = $('bkOut'); $('bkMsg').textContent = msg; out.hidden = false;
-    if (B.WHATSAPP) { window.open('https://wa.me/' + B.WHATSAPP + '?text=' + encodeURIComponent(msg), '_blank'); $('bkNote').textContent = 'WhatsApp is opening with your request ready to send. Your slot is confirmed once we reply.'; $('bkIg').hidden = true; }
-    else { $('bkNote').textContent = 'Copy your request and send it to us on Instagram. Your slot is confirmed once we reply.'; $('bkIg').hidden = false; }
+    const sms = $('bkSms');
+    if (B.WHATSAPP) { window.open('https://wa.me/' + B.WHATSAPP + '?text=' + encodeURIComponent(msg), '_blank'); $('bkNote').textContent = 'WhatsApp is opening with your request ready to send. Your slot is confirmed once we reply.'; sms.hidden = true; $('bkIg').hidden = true; }
+    else if (B.TEXT_NUMBER) {
+      const href = 'sms:' + B.TEXT_NUMBER + '?&body=' + encodeURIComponent(msg);
+      sms.href = href; sms.hidden = false; $('bkIg').hidden = false;
+      $('bkNote').textContent = 'Your messages app should open with the request ready to send. If it doesn\'t, tap Text request, or copy it and text ' + B.TEXT_NUMBER.replace('+44', '0').replace(/^(\d{5})(\d{6})$/, '$1 $2') + '. Your slot is confirmed once we reply.';
+      if (matchMedia('(pointer:coarse)').matches) setTimeout(() => { location.href = href; }, 400);
+    }
+    else { $('bkNote').textContent = 'Copy your request and send it to us on Instagram. Your slot is confirmed once we reply.'; sms.hidden = true; $('bkIg').hidden = false; }
     out.scrollIntoView({ behavior: 'smooth', block: 'center' });
   });
   $('bkCopy').addEventListener('click', () => { const t = $('bkMsg').textContent; const done = () => { $('bkCopy').textContent = 'Copied'; setTimeout(() => $('bkCopy').textContent = 'Copy request', 1800); };
