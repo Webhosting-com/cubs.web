@@ -296,7 +296,7 @@ nav.main a.cur{color:var(--ink)}
 <header class="site"><div class="wrap"><div class="bar">
 <a class="logo" href="#top" aria-label="The Audio Box"><span class="badge"><small>THE</small>AUDIO<br>BOX</span><span class="wm">The Audio Box</span></a>
 <nav class="main"><a href="#studio">Studio</a><a href="#journal">Blog</a><a href="#spotlight">Spotlight</a><a href="#gallery">Gallery</a><a href="#join">Join</a></nav>
-<a class="ig" data-insta href="https://instagram.com/cubs.x" target="_blank" rel="noopener" aria-label="Instagram @cubs.x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg><span class="t">@cubs.x</span></a>
+<a class="ig" data-insta href="https://instagram.com/theaudiobox_" target="_blank" rel="noopener" aria-label="Instagram @theaudiobox_"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg><span class="t">@theaudiobox_</span></a>
 <button class="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </div></div>
 <div class="drawer"><a href="#studio">Book the studio</a><a href="#journal">Blog</a><a href="#spotlight">Spotlight</a><a href="#gallery">Gallery</a><a href="#join">Join the network</a></div></header>
@@ -306,7 +306,7 @@ nav.main a.cur{color:var(--ink)}
 <span class="eyebrow">Artist/Producer</span>
 <h1>The Audio<br><span>Box</span></h1>
 <ul class="offer"><li>Studio Sessions</li><li>Mixing &amp; Mastering</li><li>Contact To Collab</li></ul>
-<div class="cta-row"><a class="btn" href="#studio">Book studio time</a><a class="btn ghost" href="#join">Join the network</a><a class="btn ghost" data-insta href="https://instagram.com/cubs.x" target="_blank" rel="noopener">Follow @cubs.x</a></div>
+<div class="cta-row"><a class="btn" href="#studio">Book studio time</a><a class="btn ghost" href="#join">Join the network</a><a class="btn ghost" data-insta href="https://instagram.com/theaudiobox_" target="_blank" rel="noopener">Follow @theaudiobox_</a></div>
 </div>
 </div></section>
 
@@ -393,19 +393,19 @@ nav.main a.cur{color:var(--ink)}
 </div></aside>
 </form>
 <div class="bk-out" id="bkOut" hidden><h3>Your request is ready</h3><pre id="bkMsg"></pre><p id="bkNote"></p>
-<div class="cta-row"><button class="btn" type="button" id="bkCopy">Copy request</button><a class="btn ghost" id="bkIg" data-insta href="https://instagram.com/cubs.x" target="_blank" rel="noopener">Open Instagram @cubs.x</a></div></div>
+<div class="cta-row"><button class="btn" type="button" id="bkCopy">Copy request</button><a class="btn ghost" id="bkIg" data-insta href="https://instagram.com/theaudiobox_" target="_blank" rel="noopener">Open Instagram @theaudiobox_</a></div></div>
 </div></section>
 </main></div>
 
 <footer class="site"><div class="wrap">
 <div class="big" aria-hidden="true">The Audio Box</div>
-<div class="foot"><div class="links"><a data-insta href="https://instagram.com/cubs.x" target="_blank" rel="noopener">Instagram @cubs.x</a><a data-linktree href="https://linktr.ee/cubsx" target="_blank" rel="noopener">Linktree</a><a href="#join">Join</a></div>
+<div class="foot"><div class="links"><a data-insta href="https://instagram.com/theaudiobox_" target="_blank" rel="noopener">Instagram @theaudiobox_</a><a data-linktree href="https://linktr.ee/cubsx" target="_blank" rel="noopener">Linktree</a><a href="#join">Join</a></div>
 <div>© <span data-year></span> The Audio Box</div></div></div></footer>
 <script>window.POST_HREF=function(id){return "#post/"+id};</script><script>/* ============ EDIT ME ============ */
 const CONFIG = {
   TELEGRAM_URL: 'https://t.me/+Q_wHH23uHmliMTY0',            // paste your Audio Box Telegram invite link here
   SHEET_URL: 'https://script.google.com/macros/s/AKfycbzItj3OzGBJclFA04VLRt7EXbI38aXcWUnS5SiBgtQbqr7ONWF7pG1S8VI6RH1NSDM/exec',               // optional: Google Apps Script web-app URL that saves quiz answers to a Google Sheet
-  INSTAGRAM_URL: 'https://instagram.com/cubs.x',
+  INSTAGRAM_URL: 'https://instagram.com/theaudiobox_',
   LINKTREE_URL: 'https://linktr.ee/cubsx',
   // ---- Studio booking ----
   BOOKING: {
@@ -631,6 +631,7 @@ if (document.body.dataset.page === 'post') renderArticle(new URLSearchParams(loc
  var main=document.getElementById('top'),pv=document.getElementById('postView'),sv=document.getElementById('studioView');
  function route(){
   var h=location.hash,m=h.match(/^#post\/(.+)$/),was=!pv.hidden||!sv.hidden;
+  var onPost=!!m;document.querySelectorAll('header a.ig,.foot a[href*="instagram.com"]').forEach(function(a){var t=a.querySelector('.t');var h=onPost?'cubs.x':'theaudiobox_';a.href='https://instagram.com/'+h;if(t)t.textContent='@'+h;else a.textContent='Instagram @'+h;a.setAttribute('aria-label','Instagram @'+h);});
   if(m){main.hidden=true;sv.hidden=true;pv.hidden=false;renderArticle(decodeURIComponent(m[1]));window.scrollTo(0,0);}
   else if(h==='#studio'){main.hidden=true;pv.hidden=true;sv.hidden=false;document.title='Book the Studio | The Audio Box';window.scrollTo(0,0);}
   else{main.hidden=false;pv.hidden=true;sv.hidden=true;document.title='The Audio Box';if(was){var t=document.getElementById(h.slice(1));if(t)t.scrollIntoView();else window.scrollTo(0,0);}}
