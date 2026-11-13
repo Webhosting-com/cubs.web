@@ -497,7 +497,7 @@ nav.main a.cur{color:var(--ink)}
 </div></aside>
 </form>
 <div class="bk-out" id="bkOut" hidden><h3>Your request is ready</h3><pre id="bkMsg"></pre><p id="bkNote"></p>
-<div class="cta-row"><button class="btn" type="button" id="bkCopy">Copy request</button><a class="btn ghost" id="bkIg" data-insta href="https://instagram.com/theaudiobox_" target="_blank" rel="noopener">Open Instagram @theaudiobox_</a></div></div>
+<div class="cta-row"><a class="btn" id="bkWa" href="#" target="_blank" rel="noopener" style="display:none">Send on WhatsApp</a><button class="btn ghost" type="button" id="bkCopy">Copy request</button><a class="btn ghost" id="bkIg" data-insta href="https://instagram.com/theaudiobox_" target="_blank" rel="noopener">Open Instagram @theaudiobox_</a></div></div>
 </div></section>
 </main></div>
 <div id="privacyView" hidden><main class="privacypage"><section class="s"><div class="wrap"><a class="backlink" href="#">← Back to home</a>
@@ -537,7 +537,7 @@ const CONFIG = {
   LINKTREE_URL: 'https://linktr.ee/cubsx',
   // ---- Studio booking ----
   BOOKING: {
-    WHATSAPP: '',              // digits only, e.g. 447123456789. Until set, the request is shown to copy and send via Instagram.
+    WHATSAPP: '447742012353',              // digits only, e.g. 447123456789. Until set, the request is shown to copy and send via Instagram.
     SHOW_DAYS: 14,             // how many upcoming days to show as quick picks (any other date can be chosen too)
     START_HOUR: 9,             // first start time offered (9am)
     END_HOUR: 23,              // last start time offered is the hour before (10pm)
@@ -789,8 +789,10 @@ if (document.body.dataset.page === 'post') renderArticle(new URLSearchParams(loc
     const d = Object.fromEntries(new FormData(form)), end = S.start + S.hours;
     const msg = `Hi, I'd like to request a studio session at The Audio Box.\n\nPreferred date: ${longDate(new Date(S.date + 'T12:00:00'))}\nPreferred time: ${hr(S.start)} to ${hr(end)} (${S.hours} hour${S.hours > 1 ? 's' : ''})\nTotal: ${money(S.hours * B.RATE)} (${money(B.RATE)} per hour)\nSession type: ${d.type || 'Not sure yet'}\nName: ${d.name.trim()}\nContact: ${d.contact.trim()}${(d.email || '').trim() ? '\nEmail: ' + d.email.trim() : ''}\nNotes: ${(d.notes || '').trim() || '-'}`;
     const out = $('bkOut'); $('bkMsg').textContent = msg; out.hidden = false;
-    if (B.WHATSAPP) { window.open('https://wa.me/' + B.WHATSAPP + '?text=' + encodeURIComponent(msg), '_blank'); $('bkNote').textContent = 'WhatsApp is opening with your request ready to send. We\'ll confirm your slot, or agree another time, once we reply.'; $('bkIg').hidden = true; }
-    else { $('bkNote').textContent = 'Copy your request, then send it to us on Instagram. We\'ll confirm your slot, or agree another time, once we reply.'; $('bkIg').hidden = false; }
+    const wa = $('bkWa');
+    if (B.WHATSAPP) { wa.href = 'https://wa.me/' + B.WHATSAPP + '?text=' + encodeURIComponent(msg); wa.style.display = ''; $('bkNote').textContent = 'Send your request to us on WhatsApp, or copy it and message us on Instagram. We\'ll confirm your slot, or agree another time, once we reply.'; }
+    else { wa.style.display = 'none'; $('bkNote').textContent = 'Copy your request, then send it to us on Instagram. We\'ll confirm your slot, or agree another time, once we reply.'; }
+    $('bkIg').hidden = false;
     out.scrollIntoView({ behavior: 'smooth', block: 'center' });
   });
   $('bkCopy').addEventListener('click', () => { const t = $('bkMsg').textContent; const done = () => { $('bkCopy').textContent = 'Copied'; setTimeout(() => $('bkCopy').textContent = 'Copy request', 1800); };
