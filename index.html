@@ -425,7 +425,16 @@ nav.main a.cur{color:var(--ink)}
 .svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
 .svc>div{border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:24px}
 .svc h3{font-size:24px;margin:10px 0 8px;overflow-wrap:anywhere}.svc p{color:var(--muted);font-size:15px}
-.svc-cta{margin-top:24px}
+.enq{margin-top:28px;border:1px solid var(--line);border-radius:12px;background:var(--panel);padding:30px}
+.enq-head h3{font-size:clamp(28px,4vw,42px);margin:8px 0 6px}.enq-head p{color:var(--muted);margin-bottom:20px}
+.enq-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.enq-grid .wide{grid-column:1/-1}
+.enq .field{display:flex;flex-direction:column;gap:6px}.enq .field[hidden]{display:none}
+.enq label{font-size:13px;font-weight:600;color:var(--ink)}.enq .req{color:var(--accent)}.enq .optl{color:var(--dim);font-weight:400}
+.enq input,.enq select,.enq textarea{font:inherit;font-size:16px;padding:13px 14px;border:1px solid #3a3631;border-radius:10px;background:#0a0908;color:var(--ink);width:100%}
+.enq textarea{min-height:96px;resize:vertical}.enq input:focus,.enq select:focus,.enq textarea:focus{outline:0;border-color:var(--accent)}
+.enq .err{display:none;font-size:13px;color:#ff8a7a}.enq .field.bad .err{display:block}.enq .field.bad input,.enq .field.bad select{border-color:#ff8a7a}
+.enq .cta-row{margin-top:22px}
+@media(max-width:700px){.enq{padding:20px}.enq-grid{grid-template-columns:1fr}}
 </style></head>
 <body>
 <header class="site"><div class="wrap"><div class="bar">
@@ -503,7 +512,32 @@ nav.main a.cur{color:var(--ink)}
 <div><span class="num">04</span><h3>Mastering</h3><p>A streaming-ready master from your final mix.</p></div>
 <div><span class="num">05</span><h3>Production</h3><p>Beats and production built with you. No fixed price, so get in touch to talk about your project.</p></div>
 </div>
-<div class="cta-row svc-cta"><a class="btn" data-enquire href="#" target="_blank" rel="noopener">Send an enquiry on WhatsApp</a><a class="btn ghost" data-insta href="https://instagram.com/theaudiobox_" target="_blank" rel="noopener">DM @theaudiobox_</a></div>
+<form class="enq" id="enqForm" novalidate>
+<div class="enq-head"><span class="eyebrow">Enquire</span><h3>Tell Cubs what you need</h3><p>Fill this in and it opens WhatsApp with your message ready to send.</p></div>
+<div class="enq-grid">
+<div class="field"><label for="enqName">Your name or artist name <span class="req">*</span></label><input id="enqName" autocomplete="name" required><span class="err">Please add your name</span></div>
+<div class="field"><label for="enqSvc">What's it for? <span class="req">*</span></label><select id="enqSvc" required>
+<option value="">Choose one</option>
+<option value="rec">Recording / studio session</option>
+<option value="mix">Mixing</option>
+<option value="mixmaster">Mix &amp; master</option>
+<option value="master">Mastering</option>
+<option value="prod">Beats &amp; production</option>
+<option value="team">Work with a TAB engineer, photographer or videographer</option>
+<option value="join">Join the TAB team</option>
+<option value="other">Something else</option>
+</select><span class="err">Pick one</span></div>
+<div class="field" data-for="rec"><label for="enqDate">Preferred date <span class="optl">(optional)</span></label><input id="enqDate" type="date"></div>
+<div class="field" data-for="rec"><label for="enqHours">Roughly how long? <span class="optl">(optional)</span></label><select id="enqHours"><option value="">Not sure yet</option><option>1 hour</option><option>2 hours</option><option>3 hours</option><option>4 hours</option><option>5+ hours</option></select></div>
+<div class="field" data-for="mix mixmaster master"><label for="enqTracks">How many tracks? <span class="optl">(optional)</span></label><input id="enqTracks" type="number" min="1" inputmode="numeric"></div>
+<div class="field" data-for="rec"><label for="enqWhere">Where? <span class="optl">(optional)</span></label><select id="enqWhere"><option value="">Not sure yet</option><option>London</option><option>Gloucestershire</option></select></div>
+<div class="field" data-for="team"><label for="enqWho">Who do you need?</label><select id="enqWho"><option>An engineer</option><option>A producer</option><option>A photographer</option><option>A videographer</option><option>Not sure yet</option></select></div>
+<div class="field" data-for="join"><label for="enqRole">What do you do?</label><select id="enqRole"><option>Engineer</option><option>Producer</option><option>Photographer</option><option>Videographer</option><option>Something else</option></select></div>
+<div class="field wide"><label for="enqLink" id="enqLinkL">Link to your music or work <span class="optl">(optional)</span></label><input id="enqLink" placeholder="Instagram, Spotify, SoundCloud…"></div>
+<div class="field wide"><label for="enqNotes">Anything else? <span class="optl">(optional)</span></label><textarea id="enqNotes" placeholder="A few words about the project"></textarea></div>
+</div>
+<div class="cta-row"><button class="btn" type="submit">Send on WhatsApp</button><a class="btn ghost" data-insta href="https://instagram.com/theaudiobox_" target="_blank" rel="noopener">Or DM @theaudiobox_</a></div>
+</form>
 </div></section>
 <section class="s" id="team"><div class="wrap ab-two">
 <div><span class="eyebrow">The TAB team</span><h2>Need more than one pair of hands?</h2></div>
@@ -624,6 +658,37 @@ document.querySelectorAll('[data-enquire]').forEach(a => a.href = 'https://wa.me
 
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const fmt = s => new Date(s + 'T12:00:00').toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+
+// ---------- enquiry form -> WhatsApp ----------
+(function () {
+  const f = document.getElementById('enqForm'); if (!f) return;
+  const $ = id => document.getElementById(id), v = id => ($(id).value || '').trim();
+  const sync = () => { const k = v('enqSvc'); f.querySelectorAll('[data-for]').forEach(el => el.hidden = !el.dataset.for.split(' ').includes(k)); $('enqLinkL').firstChild.textContent = k === 'join' ? 'Link to your portfolio ' : 'Link to your music or work '; };
+  $('enqSvc').addEventListener('change', () => { $('enqSvc').closest('.field').classList.remove('bad'); sync(); });
+  $('enqName').addEventListener('input', () => $('enqName').closest('.field').classList.remove('bad'));
+  sync();
+  f.addEventListener('submit', e => {
+    e.preventDefault();
+    const name = v('enqName'), k = v('enqSvc');
+    $('enqName').closest('.field').classList.toggle('bad', !name); $('enqSvc').closest('.field').classList.toggle('bad', !k);
+    if (!name || !k) return;
+    const date = v('enqDate') ? new Date(v('enqDate') + 'T12:00:00').toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' }) : '';
+    const tracks = v('enqTracks'), extra = [];
+    let opener;
+    if (k === 'rec') { opener = "I'd like to book a recording session with you."; if (date) extra.push('Preferred date: ' + date); if (v('enqHours')) extra.push('Length: ' + v('enqHours')); if (v('enqWhere')) extra.push('Where: ' + v('enqWhere')); }
+    else if (k === 'mix') opener = `I'd like you to mix ${tracks > 1 ? tracks + ' tracks' : 'a track'} for me.`;
+    else if (k === 'mixmaster') opener = `I'd like a mix and master on ${tracks > 1 ? tracks + ' tracks' : 'a track'}.`;
+    else if (k === 'master') opener = `I'd like ${tracks > 1 ? tracks + ' tracks' : 'a track'} mastered.`;
+    else if (k === 'prod') opener = "I'd like to talk about beats / production with you.";
+    else if (k === 'team') opener = `I'm looking to work with ${v('enqWho').toLowerCase()} from the TAB network.`;
+    else if (k === 'join') { const r = v('enqRole').toLowerCase(); opener = r === 'something else' ? "I'd like to join the TAB team." : `I'm ${/^[aeiou]/.test(r) ? 'an' : 'a'} ${r} and I'd like to join the TAB team.`; }
+    else opener = "I've got a question for you.";
+    if (v('enqLink')) extra.push((k === 'join' ? 'My work: ' : 'My music: ') + v('enqLink'));
+    if (v('enqNotes')) extra.push('', v('enqNotes'));
+    const msg = [`Hi Cubs, it's ${name}. I found you through The Audio Box website.`, '', opener, ...(extra.length ? [''].concat(extra) : [])].join('\n');
+    window.open('https://wa.me/' + CONFIG.WHATSAPP + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+  });
+})();
 
 // ---------- blog ----------
 (function () {
