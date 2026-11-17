@@ -4,7 +4,7 @@
 <meta name="description" content="The Audio Box: a music network founded by Cubs. A weekly blog every Friday, artist spotlights and what's moving in music.">
 <meta name="theme-color" content="#0B0A09"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23F04A12'/%3E%3Ctext x='32' y='28' text-anchor='middle' font-family='Impact,sans-serif' font-size='14' fill='%230B0A09'%3EAUDIO%3C/text%3E%3Ctext x='32' y='50' text-anchor='middle' font-family='Impact,sans-serif' font-size='22' fill='%230B0A09'%3EBOX%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@300;400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>:root{--bg:#0B0A09;--panel:#12110F;--panel2:#181614;--ink:#EDE8DF;--muted:#A19B90;--dim:#5E5A52;--line:#25221F;--accent:#F04A12}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:72px}
@@ -424,7 +424,8 @@ nav.main a.cur{color:var(--ink)}
 .post .read{display:inline-block;text-decoration:none}
 .svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
 .svc>div{border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:24px}
-.svc h3{font-size:24px;margin:10px 0 8px;overflow-wrap:anywhere}.svc p{color:var(--muted);font-size:15px}
+.svc h3{font-family:'Oswald',sans-serif;font-weight:300;color:var(--accent);font-size:28px;letter-spacing:.02em;line-height:1.05;margin:10px 0 10px;overflow-wrap:anywhere}
+.svc .num{color:var(--accent);font-family:'Oswald',sans-serif;font-weight:300;font-size:18px}.svc p{color:var(--muted);font-size:15px}
 .enq{margin-top:28px;border:1px solid var(--line);border-radius:12px;background:var(--panel);padding:30px}
 .enq-head h3{font-size:clamp(28px,4vw,42px);margin:8px 0 6px}.enq-head p{color:var(--muted);margin-bottom:20px}
 .enq-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.enq-grid .wide{grid-column:1/-1}
@@ -434,6 +435,16 @@ nav.main a.cur{color:var(--ink)}
 .enq textarea{min-height:96px;resize:vertical}.enq input:focus,.enq select:focus,.enq textarea:focus{outline:0;border-color:var(--accent)}
 .enq .err{display:none;font-size:13px;color:#ff8a7a}.enq .field.bad .err{display:block}.enq .field.bad input,.enq .field.bad select{border-color:#ff8a7a}
 .enq .cta-row{margin-top:22px}
+.enq .eq{margin:0 0 20px}.enq .eq[hidden]{display:none}.enq .ql{font-size:13px;font-weight:600;margin:0 0 10px;color:var(--ink)}
+.enq .chips{display:flex;flex-wrap:wrap;gap:8px}
+.enq .chips button{font:inherit;font-size:15px;padding:11px 18px;border-radius:999px;border:1px solid #3a3631;background:#0a0908;color:var(--ink);cursor:pointer;transition:border-color .15s,background .15s}
+.enq .chips button:hover{border-color:var(--accent)}
+.enq .chips button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#0b0a09;font-weight:600}
+.enq .eq.bad .err{display:block}.enq .eq.bad .chips button{border-color:#ff8a7a}
+.enq .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:520px}
+.enq .step{display:inline-flex;align-items:center;border:1px solid #3a3631;border-radius:999px;overflow:hidden}
+.enq .step button{font:inherit;font-size:22px;width:48px;height:46px;background:#0a0908;color:var(--ink);border:0;cursor:pointer}.enq .step button:hover{color:var(--accent)}
+.enq .step output{min-width:44px;text-align:center;font-size:18px;font-weight:600}
 @media(max-width:700px){.enq{padding:20px}.enq-grid{grid-template-columns:1fr}}
 </style></head>
 <body>
@@ -508,33 +519,25 @@ nav.main a.cur{color:var(--ink)}
 <div class="svc">
 <div><span class="num">01</span><h3>Recording &amp; engineering</h3><p>Cubs engineers your session: setup, mics and tracking, in London or Gloucestershire.</p></div>
 <div><span class="num">02</span><h3>Mixing</h3><p>A full mix from your stems, with two rounds of changes.</p></div>
-<div><span class="num">03</span><h3>Mix &amp; master</h3><p>Your mix plus a streaming-ready master.</p></div>
-<div><span class="num">04</span><h3>Mastering</h3><p>A streaming-ready master from your final mix.</p></div>
-<div><span class="num">05</span><h3>Production</h3><p>Beats and production built with you. No fixed price, so get in touch to talk about your project.</p></div>
+<div><span class="num">03</span><h3>Production</h3><p>Beats and production built with you. No fixed price, so get in touch to talk about your project.</p></div>
 </div>
 <form class="enq" id="enqForm" novalidate>
-<div class="enq-head"><span class="eyebrow">Enquire</span><h3>Tell Cubs what you need</h3><p>Fill this in and it opens WhatsApp with your message ready to send.</p></div>
+<div class="enq-head"><span class="eyebrow">Enquire</span><h3>Tell Cubs what you need</h3><p>Tap your answers and it opens WhatsApp with your message ready to send.</p></div>
+<div class="eq"><p class="ql">What's it for? <span class="req">*</span></p>
+<div class="chips" data-q="svc" role="radiogroup" aria-label="What's it for?">
+<button type="button" data-v="rec">Recording session</button><button type="button" data-v="mix">Mixing</button><button type="button" data-v="prod">Production</button><button type="button" data-v="team">Work with the TAB team</button><button type="button" data-v="join">Join the TAB team</button><button type="button" data-v="other">Something else</button>
+</div><span class="err">Pick one</span></div>
+<div class="eq" data-for="rec"><p class="ql">How long?</p><div class="chips" data-q="hours"><button type="button" data-v="1 hour">1 hr</button><button type="button" data-v="2 hours">2 hrs</button><button type="button" data-v="3 hours">3 hrs</button><button type="button" data-v="4 hours">4 hrs</button><button type="button" data-v="5+ hours">5+ hrs</button><button type="button" data-v="">Not sure</button></div></div>
+<div class="eq" data-for="rec"><p class="ql">Where?</p><div class="chips" data-q="where"><button type="button" data-v="London">London</button><button type="button" data-v="Gloucestershire">Gloucestershire</button><button type="button" data-v="">Not sure</button></div></div>
+<div class="eq" data-for="rec"><p class="ql">When? <span class="optl">(optional)</span></p><div class="row2"><select id="enqDay" aria-label="Day"></select><select id="enqTime" aria-label="Time of day"><option value="">Any time</option><option>Morning</option><option>Afternoon</option><option>Evening</option></select></div></div>
+<div class="eq" data-for="mix"><p class="ql">How many tracks?</p><div class="step"><button type="button" data-step="-1" aria-label="Fewer">−</button><output id="enqTracks">1</output><button type="button" data-step="1" aria-label="More">+</button></div></div>
+<div class="eq" data-for="prod"><p class="ql">What do you need?</p><div class="chips" data-q="prodwhat"><button type="button" data-v="a custom beat">A custom beat</button><button type="button" data-v="full production on a track">Full production</button><button type="button" data-v="a few beats for a project">Beats for a project</button></div></div>
+<div class="eq" data-for="team"><p class="ql">Who do you need?</p><div class="chips" data-q="who"><button type="button" data-v="an engineer">Engineer</button><button type="button" data-v="a producer">Producer</button><button type="button" data-v="a photographer">Photographer</button><button type="button" data-v="a videographer">Videographer</button></div></div>
+<div class="eq" data-for="join"><p class="ql">What do you do?</p><div class="chips" data-q="role"><button type="button" data-v="an engineer">Engineer</button><button type="button" data-v="a producer">Producer</button><button type="button" data-v="a photographer">Photographer</button><button type="button" data-v="a videographer">Videographer</button><button type="button" data-v="">Something else</button></div></div>
 <div class="enq-grid">
 <div class="field"><label for="enqName">Your name or artist name <span class="req">*</span></label><input id="enqName" autocomplete="name" required><span class="err">Please add your name</span></div>
-<div class="field"><label for="enqSvc">What's it for? <span class="req">*</span></label><select id="enqSvc" required>
-<option value="">Choose one</option>
-<option value="rec">Recording / studio session</option>
-<option value="mix">Mixing</option>
-<option value="mixmaster">Mix &amp; master</option>
-<option value="master">Mastering</option>
-<option value="prod">Beats &amp; production</option>
-<option value="team">Work with a TAB engineer, photographer or videographer</option>
-<option value="join">Join the TAB team</option>
-<option value="other">Something else</option>
-</select><span class="err">Pick one</span></div>
-<div class="field" data-for="rec"><label for="enqDate">Preferred date <span class="optl">(optional)</span></label><input id="enqDate" type="date"></div>
-<div class="field" data-for="rec"><label for="enqHours">Roughly how long? <span class="optl">(optional)</span></label><select id="enqHours"><option value="">Not sure yet</option><option>1 hour</option><option>2 hours</option><option>3 hours</option><option>4 hours</option><option>5+ hours</option></select></div>
-<div class="field" data-for="mix mixmaster master"><label for="enqTracks">How many tracks? <span class="optl">(optional)</span></label><input id="enqTracks" type="number" min="1" inputmode="numeric"></div>
-<div class="field" data-for="rec"><label for="enqWhere">Where? <span class="optl">(optional)</span></label><select id="enqWhere"><option value="">Not sure yet</option><option>London</option><option>Gloucestershire</option></select></div>
-<div class="field" data-for="team"><label for="enqWho">Who do you need?</label><select id="enqWho"><option>An engineer</option><option>A producer</option><option>A photographer</option><option>A videographer</option><option>Not sure yet</option></select></div>
-<div class="field" data-for="join"><label for="enqRole">What do you do?</label><select id="enqRole"><option>Engineer</option><option>Producer</option><option>Photographer</option><option>Videographer</option><option>Something else</option></select></div>
-<div class="field wide"><label for="enqLink" id="enqLinkL">Link to your music or work <span class="optl">(optional)</span></label><input id="enqLink" placeholder="Instagram, Spotify, SoundCloud…"></div>
-<div class="field wide"><label for="enqNotes">Anything else? <span class="optl">(optional)</span></label><textarea id="enqNotes" placeholder="A few words about the project"></textarea></div>
+<div class="field"><label for="enqLink" id="enqLinkL">Link to your music <span class="optl">(optional)</span></label><input id="enqLink" placeholder="Instagram, Spotify, SoundCloud…"></div>
+<div class="field wide"><label for="enqNotes">Anything else? <span class="optl">(optional)</span></label><textarea id="enqNotes" rows="3" placeholder="A few words about the project"></textarea></div>
 </div>
 <div class="cta-row"><button class="btn" type="submit">Send on WhatsApp</button><a class="btn ghost" data-insta href="https://instagram.com/theaudiobox_" target="_blank" rel="noopener">Or DM @theaudiobox_</a></div>
 </form>
@@ -662,26 +665,37 @@ const fmt = s => new Date(s + 'T12:00:00').toLocaleDateString('en-GB', { day: 'n
 // ---------- enquiry form -> WhatsApp ----------
 (function () {
   const f = document.getElementById('enqForm'); if (!f) return;
-  const $ = id => document.getElementById(id), v = id => ($(id).value || '').trim();
-  const sync = () => { const k = v('enqSvc'); f.querySelectorAll('[data-for]').forEach(el => el.hidden = !el.dataset.for.split(' ').includes(k)); $('enqLinkL').firstChild.textContent = k === 'join' ? 'Link to your portfolio ' : 'Link to your music or work '; };
-  $('enqSvc').addEventListener('change', () => { $('enqSvc').closest('.field').classList.remove('bad'); sync(); });
+  const $ = id => document.getElementById(id), v = id => ($(id).value || '').trim(), pick = {};
+  // next 14 days for the day dropdown
+  const day = $('enqDay'); day.innerHTML = '<option value="">Any day</option>';
+  for (let i = 1; i <= 14; i++) { const d = new Date(); d.setDate(d.getDate() + i); day.innerHTML += `<option>${d.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' })}</option>`; }
+  const sync = () => {
+    f.querySelectorAll('[data-for]').forEach(el => el.hidden = !el.dataset.for.split(' ').includes(pick.svc));
+    $('enqLinkL').firstChild.textContent = pick.svc === 'join' ? 'Link to your work ' : 'Link to your music ';
+  };
+  f.querySelectorAll('.chips').forEach(g => g.addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    g.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b ? 'true' : 'false'));
+    pick[g.dataset.q] = b.dataset.v;
+    if (g.dataset.q === 'svc') { g.closest('.eq').classList.remove('bad'); sync(); }
+  }));
+  f.querySelectorAll('.chips button').forEach(b => b.setAttribute('aria-pressed', 'false'));
+  let tracks = 1;
+  f.querySelectorAll('[data-step]').forEach(b => b.addEventListener('click', () => { tracks = Math.max(1, Math.min(20, tracks + +b.dataset.step)); $('enqTracks').textContent = tracks; }));
   $('enqName').addEventListener('input', () => $('enqName').closest('.field').classList.remove('bad'));
   sync();
   f.addEventListener('submit', e => {
     e.preventDefault();
-    const name = v('enqName'), k = v('enqSvc');
-    $('enqName').closest('.field').classList.toggle('bad', !name); $('enqSvc').closest('.field').classList.toggle('bad', !k);
-    if (!name || !k) return;
-    const date = v('enqDate') ? new Date(v('enqDate') + 'T12:00:00').toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' }) : '';
-    const tracks = v('enqTracks'), extra = [];
-    let opener;
-    if (k === 'rec') { opener = "I'd like to book a recording session with you."; if (date) extra.push('Preferred date: ' + date); if (v('enqHours')) extra.push('Length: ' + v('enqHours')); if (v('enqWhere')) extra.push('Where: ' + v('enqWhere')); }
+    const name = v('enqName'), k = pick.svc;
+    $('enqName').closest('.field').classList.toggle('bad', !name); f.querySelector('[data-q="svc"]').closest('.eq').classList.toggle('bad', !k);
+    if (!k) { f.querySelector('[data-q="svc"]').scrollIntoView({ block: 'center', behavior: 'smooth' }); return; }
+    if (!name) { $('enqName').focus(); return; }
+    const extra = []; let opener;
+    if (k === 'rec') { opener = "I'd like to book a recording session with you."; if (pick.hours) extra.push('Length: ' + pick.hours); if (pick.where) extra.push('Where: ' + pick.where); const when = [v('enqDay'), v('enqTime')].filter(Boolean).join(', '); if (when) extra.push('When: ' + when); }
     else if (k === 'mix') opener = `I'd like you to mix ${tracks > 1 ? tracks + ' tracks' : 'a track'} for me.`;
-    else if (k === 'mixmaster') opener = `I'd like a mix and master on ${tracks > 1 ? tracks + ' tracks' : 'a track'}.`;
-    else if (k === 'master') opener = `I'd like ${tracks > 1 ? tracks + ' tracks' : 'a track'} mastered.`;
-    else if (k === 'prod') opener = "I'd like to talk about beats / production with you.";
-    else if (k === 'team') opener = `I'm looking to work with ${v('enqWho').toLowerCase()} from the TAB network.`;
-    else if (k === 'join') { const r = v('enqRole').toLowerCase(); opener = r === 'something else' ? "I'd like to join the TAB team." : `I'm ${/^[aeiou]/.test(r) ? 'an' : 'a'} ${r} and I'd like to join the TAB team.`; }
+    else if (k === 'prod') opener = `I'd like to talk about production with you${pick.prodwhat ? ': ' + pick.prodwhat : ''}.`;
+    else if (k === 'team') opener = `I'm looking to work with ${pick.who || 'someone'} from the TAB network.`;
+    else if (k === 'join') opener = pick.role ? `I'm ${pick.role} and I'd like to join the TAB team.` : "I'd like to join the TAB team.";
     else opener = "I've got a question for you.";
     if (v('enqLink')) extra.push((k === 'join' ? 'My work: ' : 'My music: ') + v('enqLink'));
     if (v('enqNotes')) extra.push('', v('enqNotes'));
