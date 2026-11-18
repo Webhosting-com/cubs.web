@@ -480,6 +480,21 @@ nav.main a.cur{color:var(--ink)}
 <div class="spot-top"><span class="eyebrow">Artist spotlight</span>
 <div class="spot-nav"><span class="spot-count" id="spotCount" aria-live="polite">01 / 06</span><button type="button" class="arrow ghost" id="spotPrev" aria-label="Previous spotlight" disabled>&larr;</button><button type="button" class="arrow" id="spotNext" aria-label="Next spotlight">&rarr;</button></div></div>
 <div class="spot-track" id="spotTrack" tabindex="0" aria-label="Artist spotlights"></div>
+<form class="enq" id="featForm" novalidate style="margin-top:40px">
+<div class="enq-head"><span class="eyebrow">Get featured</span><h3>Want to be our next spotlight?</h3><p>Independent artist in London, Gloucestershire or beyond? Fill this in and it opens an email to us with everything ready. Attach your best photo before you hit send. We read every one.</p></div>
+<div class="enq-grid">
+<div class="field"><label for="ftName">Artist name <span class="req">*</span></label><input id="ftName" required><span class="err">Please add your artist name</span></div>
+<div class="field"><label for="ftIg">Instagram <span class="req">*</span></label><input id="ftIg" placeholder="@yourname" required><span class="err">Please add your Instagram</span></div>
+<div class="field"><label for="ftArea">Where are you based?</label><input id="ftArea" placeholder="e.g. South London, Gloucester"></div>
+<div class="field"><label for="ftGenre">Genre</label><input id="ftGenre" placeholder="e.g. UK rap, R&amp;B, afroswing"></div>
+<div class="field"><label for="ftTrack">Track to feature</label><input id="ftTrack" placeholder="Song title"></div>
+<div class="field"><label for="ftLink">Link to it <span class="req">*</span></label><input id="ftLink" placeholder="Spotify, SoundCloud, YouTube…" required><span class="err">Please add a link to your music</span></div>
+<div class="field wide"><label for="ftBio">A short bio <span class="req">*</span></label><textarea id="ftBio" rows="3" placeholder="Two or three lines about you and your sound" required></textarea><span class="err">Please add a short bio</span></div>
+<div class="field wide"><label for="ftStory">The story behind the track <span class="optl">(optional)</span></label><textarea id="ftStory" rows="3" placeholder="How it was made, what it's about"></textarea></div>
+<div class="field wide"><label style="display:flex;gap:10px;align-items:flex-start;font-weight:400"><input type="checkbox" id="ftOk" style="width:auto;margin-top:4px"> <span>I made this music (or have the rights to it) and I'm happy for The Audio Box to feature it, my photo and these details on Instagram, the website and the Friday email. <span class="req">*</span></span></label><span class="err">Please tick to confirm</span></div>
+</div>
+<div class="cta-row"><button class="btn" type="submit">Open the email</button><a class="btn ghost" href="mailto:theaudiobox.pr@gmail.com">theaudiobox.pr@gmail.com</a></div>
+</form>
 </div></section>
 
 <section class="s" id="gallery"><div class="wrap">
@@ -705,6 +720,26 @@ const fmt = s => new Date(s + 'T12:00:00').toLocaleDateString('en-GB', { day: 'n
     if (v('enqNotes')) extra.push('', v('enqNotes'));
     const msg = [`Hi Cubs, it's ${name}. I found you through The Audio Box website.`, '', opener, ...(extra.length ? [''].concat(extra) : [])].join('\n');
     window.open('https://wa.me/' + CONFIG.WHATSAPP + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+  });
+})();
+
+// ---------- get featured form -> email ----------
+(function () {
+  const f = document.getElementById('featForm'); if (!f) return;
+  const $ = id => document.getElementById(id), v = id => ($(id).value || '').trim();
+  f.querySelectorAll('input,textarea').forEach(el => el.addEventListener('input', () => el.closest('.field').classList.remove('bad')));
+  f.addEventListener('submit', e => {
+    e.preventDefault();
+    let first = null;
+    ['ftName', 'ftIg', 'ftLink', 'ftBio'].forEach(id => { const bad = !v(id); $(id).closest('.field').classList.toggle('bad', bad); if (bad && !first) first = $(id); });
+    const ok = $('ftOk').checked; $('ftOk').closest('.field').classList.toggle('bad', !ok); if (!ok && !first) first = $('ftOk');
+    if (first) { first.focus(); return; }
+    const body = ['Hi The Audio Box, I would like to be featured in your artist spotlight.', '',
+      'Artist name: ' + v('ftName'), 'Instagram: ' + v('ftIg'), 'Based in: ' + v('ftArea'), 'Genre: ' + v('ftGenre'),
+      'Track: ' + v('ftTrack'), 'Link: ' + v('ftLink'), '', 'Bio:', v('ftBio'), '', 'Story behind the track:', v('ftStory') || '-', '',
+      'I confirm I made this music (or have the rights to it) and I am happy for The Audio Box to feature it.', '',
+      '>> Remember to attach your best photo (portrait works best) before you send.'].join('\n');
+    location.href = 'mailto:theaudiobox.pr@gmail.com?subject=' + encodeURIComponent('TAB Spotlight: ' + v('ftName')) + '&body=' + encodeURIComponent(body);
   });
 })();
 
