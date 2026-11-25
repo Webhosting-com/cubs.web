@@ -455,8 +455,13 @@ nav.main a.cur{color:var(--ink)}
 /* services */
 .svc-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px}
 .svc-card{grid-column:span 2}.svc-card:nth-child(6),.svc-card:nth-child(7){grid-column:span 3}
-.svc-dev{grid-column:1/-1;border-color:var(--accent);background:linear-gradient(135deg,rgba(240,74,18,.14),var(--panel) 60%)}
+.svc-dev{position:relative;grid-column:1/-1;border:2px solid var(--accent)!important;box-shadow:0 0 0 6px rgba(240,74,18,.08),0 30px 80px rgba(240,74,18,.12);background:linear-gradient(135deg,rgba(240,74,18,.14),var(--panel) 60%)}
 .svc-dev>p{flex:none;max-width:720px}
+.svc-pop{position:absolute;top:-14px;left:24px;background:var(--accent);color:#0B0A09;font-weight:800;font-size:12px;letter-spacing:.16em;text-transform:uppercase;padding:7px 14px;border-radius:999px;box-shadow:0 8px 24px rgba(240,74,18,.35)}
+.svc-dev{margin-top:14px}.svc-dev .svc-top b{font-size:40px}
+.svc-big{padding:16px 34px;font-size:15px}
+.svc-jump,.sb-tip a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+.sb-tip{margin:0;color:var(--muted);font-size:14px;border-left:3px solid var(--accent);padding:6px 0 6px 12px}
 .svc-tag{display:block;color:var(--accent);font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;margin-bottom:6px}
 .svc-list{list-style:none;margin:2px 0 6px;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
 .svc-list li{border:1px solid #3a2418;border-radius:10px;padding:14px;font-weight:600;font-size:15px;color:var(--ink);background:rgba(11,10,9,.35)}
@@ -565,8 +570,14 @@ nav.main a.cur{color:var(--ink)}
 </div></div></section>
 
 <section class="s" id="services"><div class="wrap">
-<div class="sh"><h2>Services</h2><p>Book straight on WhatsApp. We reply with prices and times.</p></div>
+<div class="sh"><h2>Services</h2><p>Book straight on WhatsApp. We reply with prices and times. Recording every month? <a href="#artistDev" class="svc-jump">Artist development</a> is our most popular option.</p></div>
 <div class="svc-grid">
+<article class="svc-card svc-dev" id="artistDev"><span class="svc-pop">Most popular</span>
+<div class="svc-top"><div><span class="svc-tag">Monthly retainer · best value</span><h3>Artist development</h3></div><b>£250<small>/month</small></b></div>
+<p>For artists ready to put in consistent work. Every month you get real studio time, finished music and the content to show it off, with the TAB team behind you.</p>
+<ul class="svc-list"><li>2 × 4-hour studio blocks</li><li>1 mix &amp; master</li><li>1 behind-the-scenes reel</li><li>5 edited press photos</li></ul>
+<a class="btn svc-wa svc-big" href="#" data-wa="dev" target="_blank" rel="noopener">Book now</a>
+</article>
 <article class="svc-card svc-book" id="studioBook">
 <div class="svc-top"><h3>Studio session</h3></div>
 <p>Book a session with an experienced TAB engineer in a professionally treated studio, from Cheltenham to South London. We set up and soundcheck before you arrive, so the session is spent creating. You leave with clean, well-recorded files that are ready to mix. Prices depend on the day, time, studio and engineer: fill this in and we'll send a quote.</p>
@@ -582,15 +593,11 @@ nav.main a.cur{color:var(--ink)}
 <div class="field"><label>Anything else? <span class="optl">(optional)</span></label>
 <div class="sb-extras"><label class="chip"><input type="checkbox" value="Mixing"><span class="box" aria-hidden="true"></span><span>Mixing</span></label><label class="chip"><input type="checkbox" value="Mastering"><span class="box" aria-hidden="true"></span><span>Mastering</span></label><label class="chip"><input type="checkbox" value="Mix &amp; master"><span class="box" aria-hidden="true"></span><span>Mix &amp; master</span></label><label class="chip"><input type="checkbox" value="Production"><span class="box" aria-hidden="true"></span><span>Production</span></label><label class="chip"><input type="checkbox" value="Photographer"><span class="box" aria-hidden="true"></span><span>Photographer</span></label><label class="chip"><input type="checkbox" value="Videographer"><span class="box" aria-hidden="true"></span><span>Videographer</span></label></div></div>
 <div class="field"><label for="sbNotes">Notes <span class="optl">(optional)</span></label><input id="sbNotes" placeholder="Times that suit you, a link to your music, anything we should know"></div>
+<p class="sb-tip">Recording regularly? <a href="#artistDev">Artist development</a> gives you two 4-hour studio blocks every month, plus a mix &amp; master, a reel and press photos, for £250.</p>
 <button class="btn" type="submit">Book on WhatsApp</button>
 </form>
 </article>
-<article class="svc-card svc-dev">
-<div class="svc-top"><div><span class="svc-tag">Monthly retainer</span><h3>Artist development</h3></div><b>£250<small>/month</small></b></div>
-<p>For artists ready to put in consistent work. Every month you get real studio time, finished music and the content to show it off, with the TAB team behind you.</p>
-<ul class="svc-list"><li>2 × 4-hour studio blocks</li><li>1 mix &amp; master</li><li>1 behind-the-scenes reel</li><li>5 edited press photos</li></ul>
-<a class="btn svc-wa" href="#" data-wa="dev" target="_blank" rel="noopener">Book now</a>
-</article>
+
 
 <article class="svc-card"><div class="svc-top"><h3>Mixing</h3><b>£100<small>/track</small></b></div><p>Your song mixed so every part sits where it should, from the vocal on top to the low end. We work to your references and your vision, and one round of changes is included to get it feeling right. You get a full-quality mix you can play anywhere.</p><p class="svc-note">1 round of changes included · extra rounds £25</p><a class="btn ghost svc-wa" href="#" data-wa="mix" target="_blank" rel="noopener">Book now</a></article><article class="svc-card"><div class="svc-top"><h3>Mix &amp; master</h3><b>£125<small>/track</small></b></div><p>Our full finishing service, taking your stems to a release-ready track. We mix it to sound balanced and powerful, then master it to sit loud and clear next to the music you love on every streaming platform.</p><p class="svc-note">1 round of changes included · extra rounds £25</p><a class="btn ghost svc-wa" href="#" data-wa="mixmaster" target="_blank" rel="noopener">Book now</a></article><article class="svc-card"><div class="svc-top"><h3>Mastering</h3><b>£50<small>/track</small></b></div><p>The final polish before release. We bring your finished mix to the right volume, tighten the tone and make sure it translates on phones, car speakers, club systems and headphones. You get a master that's ready to upload.</p><p class="svc-note">1 round of changes included · extra rounds £25</p><a class="btn ghost svc-wa" href="#" data-wa="master" target="_blank" rel="noopener">Book now</a></article><article class="svc-card"><div class="svc-top"><h3>Production</h3></div><p>Beats and full productions built around your sound, not a template. Bring an idea, a voice note or a reference and we'll build it with you in the room or remotely. You keep the creative control, and we'll agree clear terms before we start.</p><a class="btn ghost svc-wa" href="#" data-wa="prod" target="_blank" rel="noopener">Get a quote</a></article><article class="svc-card"><div class="svc-top"><h3>Photo &amp; video</h3></div><p>Shoots, visuals and behind-the-scenes content from photographers and videographers in the TAB network. Whether it's cover art, press shots or a music video, we match you with the right creative and help plan the shoot so it fits your music.</p><a class="btn ghost svc-wa" href="#" data-wa="photo" target="_blank" rel="noopener">Get a quote</a></article>
 </div>
