@@ -57,13 +57,13 @@ footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-s
 <article>
 <p>Every DAW can export all your tracks in one go. Before you start, set your loop or selection from the very start of the song to a couple of bars past the end.</p>
 <h2>Logic Pro</h2>
-<ol><li>Go to File, Export, All Tracks as Audio Files (Shift + Cmd + E).</li><li>Format WAV, resolution 24-bit, sample rate: same as the project.</li><li>Untick Normalise. Tick Include Volume/Pan Automation.</li><li>Choose whether to bypass effect plug-ins: send one dry set, and a wet set too if the effects are part of the sound.</li><li>Pick a folder and export.</li></ol>
+<ol><li>Go to File, Export, All Tracks as Audio Files (Shift + Cmd + E).</li><li>Format WAV, resolution 24-bit, sample rate: same as the project.</li><li>Set Normalize to Off. Tick Include Volume/Pan Automation if your fades and panning are part of the song.</li><li>Choose whether to bypass effect plug-ins: send one dry set, and a wet set too if the effects are part of the sound.</li><li>Pick a folder and export.</li></ol>
 <h2>FL Studio</h2>
-<ol><li>Route each sound to its own mixer insert and name the inserts.</li><li>Go to File, Export, WAV file (Ctrl + R).</li><li>Set the mode to Song, bit depth 24-bit.</li><li>Tick Split mixer tracks.</li><li>Render. FL saves one file per mixer track.</li></ol>
+<ol><li>Route each sound to its own mixer insert and name the inserts.</li><li>Go to File, Export, WAV file (Ctrl + R).</li><li>Set the mode to Song, bit depth 24-bit.</li><li>Tick Split mixer tracks.</li><li>Untick Enable master effects so your master limiter isn&#x27;t printed on every stem.</li><li>Render. FL saves one file per mixer track.</li></ol>
 <h2>Ableton Live</h2>
 <ol><li>Go to File, Export Audio/Video (Cmd/Ctrl + Shift + R).</li><li>Set Rendered Track to All Individual Tracks.</li><li>File type WAV, bit depth 24, sample rate: same as the project.</li><li>Turn Normalise off.</li><li>Export.</li></ol>
 <h2>Pro Tools</h2>
-<ol><li>Select the tracks you want to export.</li><li>Right-click a track name and choose Bounce (Track Bounce).</li><li>File type WAV, bit depth 24-bit, interleaved stereo for stereo tracks.</li><li>Untick any options that add effects you don&#x27;t want, and export to a new folder.</li></ol>
+<ol><li>Select the tracks you want to export.</li><li>Right-click a track name and choose Bounce (Track Bounce, available since Pro Tools 12.3).</li><li>File type WAV, bit depth 24-bit, interleaved stereo for stereo tracks.</li><li>Untick any options that add effects you don&#x27;t want, and export to a new folder.</li></ol>
 <div class="tip"><b>TAB tip</b>After exporting, open the folder and check the number of files matches the number of tracks. Missing a file is the most common hold-up.</div>
 </article>
 <section class="cta">

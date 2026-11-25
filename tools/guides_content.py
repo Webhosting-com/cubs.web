@@ -77,7 +77,7 @@ Every DAW can export all your tracks in one go. Before you start, set your loop 
 ## Logic Pro
 1. Go to File, Export, All Tracks as Audio Files (Shift + Cmd + E).
 2. Format WAV, resolution 24-bit, sample rate: same as the project.
-3. Untick Normalise. Tick Include Volume/Pan Automation.
+3. Set Normalize to Off. Tick Include Volume/Pan Automation if your fades and panning are part of the song.
 4. Choose whether to bypass effect plug-ins: send one dry set, and a wet set too if the effects are part of the sound.
 5. Pick a folder and export.
 
@@ -86,7 +86,8 @@ Every DAW can export all your tracks in one go. Before you start, set your loop 
 2. Go to File, Export, WAV file (Ctrl + R).
 3. Set the mode to Song, bit depth 24-bit.
 4. Tick Split mixer tracks.
-5. Render. FL saves one file per mixer track.
+5. Untick Enable master effects so your master limiter isn't printed on every stem.
+6. Render. FL saves one file per mixer track.
 
 ## Ableton Live
 1. Go to File, Export Audio/Video (Cmd/Ctrl + Shift + R).
@@ -97,7 +98,7 @@ Every DAW can export all your tracks in one go. Before you start, set your loop 
 
 ## Pro Tools
 1. Select the tracks you want to export.
-2. Right-click a track name and choose Bounce (Track Bounce).
+2. Right-click a track name and choose Bounce (Track Bounce, available since Pro Tools 12.3).
 3. File type WAV, bit depth 24-bit, interleaved stereo for stereo tracks.
 4. Untick any options that add effects you don't want, and export to a new folder.
 
@@ -245,12 +246,12 @@ Streaming platforms turn tracks up or down so everything plays at a similar volu
 
 ## The numbers
 - Spotify and YouTube normalise to around -14 LUFS integrated.
-- Apple Music normalises to around -16 LUFS.
-- Keep true peak at or below -1 dBTP so the track doesn't distort when it's converted for streaming.
+- Apple Music (with Sound Check on) normalises to around -16 LUFS.
+- Keep true peak at or below -1 dBTP so the track doesn't distort when it's converted for streaming. Spotify advises -2 dBTP if your master is louder than -14 LUFS.
 
 ## What this means for you
 - A track mastered much louder than -14 LUFS just gets turned down, and you lose punch and dynamics for nothing.
-- A track mastered quieter may get turned up, as long as there's headroom.
+- A quieter track may get turned up on Spotify, but only as far as its peaks allow. YouTube never turns quiet tracks up, it only turns loud ones down.
 - Modern rap, drill and pop are often mastered louder than -14 LUFS for impact. That's a creative choice, not a rule, and the platforms will still turn it down.
 
 > We master to sound great after normalisation, not just loud in your DAW.
@@ -307,12 +308,12 @@ Finishing the song is half the job. Plan the release so it gets heard.
 
 ## 4 to 6 weeks before
 - Final master approved, and artwork at 3000 x 3000 px (JPG or PNG, no blurry text).
-- Choose a distributor (for example DistroKid, TuneCore, Amuse or CD Baby) and upload with a release date at least 3 to 4 weeks away.
+- Choose a distributor (for example DistroKid, TuneCore, Amuse or CD Baby; all charge a fee) and upload with a release date at least 3 to 4 weeks away.
 - Fill in the metadata carefully: song title, artist names, featured artists, writers, producers, genre, explicit tag.
 - Make sure you have, or are given, an ISRC code for the track.
 
 ## 2 to 4 weeks before
-- Pitch the song to Spotify's editors through Spotify for Artists. You must pitch at least 7 days before release, but earlier is better.
+- Pitch the song to Spotify's editors through Spotify for Artists. Pitch at least 7 days before release so editors have time to listen and it lands on your followers' Release Radar. Earlier is better.
 - Set up a pre-save link and share it.
 - Plan your content: a teaser, a behind-the-scenes clip, the cover reveal.
 
