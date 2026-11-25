@@ -471,6 +471,24 @@ nav.main a.cur{color:var(--ink)}
 .svc>div{border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:24px}
 .svc h3{font-family:'Oswald',sans-serif;font-weight:300;color:var(--accent);font-size:28px;letter-spacing:.02em;line-height:1.05;margin:10px 0 10px;overflow-wrap:anywhere}
 .svc .num{color:var(--accent);font-family:'Oswald',sans-serif;font-weight:300;font-size:18px}.svc p{color:var(--muted);font-size:15px}
+/* guidance sheets */
+.guides{margin-top:72px;padding-top:56px;border-top:1px solid var(--line)}
+.guides-head p{color:var(--muted);max-width:640px;margin:8px 0 0}
+.guides-title{font-family:'Anton',Impact,sans-serif;font-weight:400;text-transform:uppercase;font-size:clamp(40px,6vw,72px);line-height:1;margin:10px 0 0}
+.guide-filters{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 20px}
+.gf{font:600 13px Inter,sans-serif;letter-spacing:.06em;color:var(--ink);background:none;border:1px solid #3a3631;border-radius:999px;padding:9px 16px;cursor:pointer}
+.gf.on{background:var(--accent);border-color:var(--accent);color:#0B0A09}
+.guide-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.guide{display:flex;flex-direction:column;gap:8px;text-decoration:none;color:inherit;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px;position:relative;overflow:hidden;transition:border-color .25s,transform .25s}
+.guide::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent);opacity:0;transition:opacity .25s}
+.guide:hover{border-color:#4a2a1c;transform:translateY(-2px)}.guide:hover::before{opacity:1}
+.guide[hidden]{display:none}
+.g-cat{color:var(--accent);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.guide h3{font-family:'Oswald',sans-serif;font-weight:400;font-size:22px;text-transform:uppercase;letter-spacing:.02em;margin:0;line-height:1.15}
+.guide p{color:var(--muted);font-size:14.5px;line-height:1.55;margin:0;flex:1}
+.g-go{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);margin-top:6px}
+@media(max-width:900px){.guide-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.guide-grid{grid-template-columns:1fr}}
 /* services */
 .svc-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px}
 .svc-card{grid-column:span 2}.svc-card:nth-child(6),.svc-card:nth-child(7){grid-column:span 3}
@@ -559,6 +577,11 @@ nav.main a.cur{color:var(--ink)}
 <div class="posts" id="postList"></div>
 <div class="cta-row blog-more"><a class="btn ghost" data-news-home href="#" target="_blank" rel="noopener">All posts</a><a class="btn" href="#subscribe">Get it every Friday</a></div>
 </div></div>
+<div class="guides" id="guides"><!--GUIDES-->
+<div class="guides-head"><div><span class="eyebrow">Free from TAB</span><h3 class="guides-title">Guidance sheets</h3><p>Branded, step-by-step sheets on sending stems, bouncing files, using plug-ins and more. Read them here or save them as a PDF.</p></div></div>
+<div class="guide-filters" role="group" aria-label="Filter guides"><button type="button" class="gf on" data-f="all">All</button><button type="button" class="gf" data-f="Mixing">Mixing</button><button type="button" class="gf" data-f="Production">Production</button><button type="button" class="gf" data-f="Recording">Recording</button><button type="button" class="gf" data-f="Sessions">Sessions</button><button type="button" class="gf" data-f="Mastering">Mastering</button><button type="button" class="gf" data-f="Workflow">Workflow</button><button type="button" class="gf" data-f="Release">Release</button></div>
+<div class="guide-grid"><a class="guide" href="guides/how-to-send-stems.html" data-cat="Mixing"><span class="g-cat">Mixing · 4 min</span><h3>How to send stems</h3><p>Exactly what to export and how to package it so your mix starts right first time.</p><span class="g-go">Read the sheet →</span></a><a class="guide" href="guides/bouncing-and-export-settings.html" data-cat="Mixing"><span class="g-cat">Mixing · 4 min</span><h3>Bouncing &amp; export settings</h3><p>The right sample rate, bit depth and file type for every stage, from demo to master.</p><span class="g-go">Read the sheet →</span></a><a class="guide" href="guides/exporting-stems-in-your-daw.html" data-cat="Mixing"><span class="g-cat">Mixing · 5 min</span><h3>Exporting stems in your DAW</h3><p>Step-by-step stem exports in Logic Pro, FL Studio, Ableton Live and Pro Tools.</p><span class="g-go">Read the sheet →</span></a><a class="guide" href="guides/using-plug-ins-the-right-way.html" data-cat="Production"><span class="g-cat">Production · 5 min</span><h3>Using plug-ins the right way</h3><p>Inserts vs sends, the order of your chain and how to avoid the mistakes that wreck a mix.</p><span class="g-go">Read the sheet →</span></a><a class="guide" href="guides/gain-staging-basics.html" data-cat="Recording"><span class="g-cat">Recording · 4 min</span><h3>Gain staging basics</h3><p>Keep your levels healthy from the mic to the master so nothing clips and plug-ins behave.</p><span class="g-go">Read the sheet →</span></a><a class="guide" href="guides/recording-vocals-at-home.html" data-cat="Recording"><span class="g-cat">Recording · 5 min</span><h3>Recording vocals at home</h3><p>Get clean, usable vocal takes from a bedroom setup before your mix session.</p><span class="g-go">Read the sheet →</span></a><a class="guide" href="guides/before-your-studio-session.html" data-cat="Sessions"><span class="g-cat">Sessions · 3 min</span><h3>Before your studio session</h3><p>What to bring, how to prepare and what happens on the day, so you get the most from your time.</p><span class="g-go">Read the sheet →</span></a><a class="guide" href="guides/preparing-your-mix-for-mastering.html" data-cat="Mastering"><span class="g-cat">Mastering · 4 min</span><h3>Preparing your mix for mastering</h3><p>How to bounce a mix that gives the mastering engineer room to make it shine.</p><span class="g-go">Read the sheet →</span></a><a class="guide" href="guides/loudness-for-streaming.html" data-cat="Mastering"><span class="g-cat">Mastering · 3 min</span><h3>Loudness for streaming</h3><p>LUFS, true peak and why louder isn&#x27;t always better on Spotify, Apple Music and YouTube.</p><span class="g-go">Read the sheet →</span></a><a class="guide" href="guides/naming-and-organising-files.html" data-cat="Workflow"><span class="g-cat">Workflow · 3 min</span><h3>Naming &amp; organising files</h3><p>A simple folder and file system that saves you hours and keeps every version safe.</p><span class="g-go">Read the sheet →</span></a><a class="guide" href="guides/using-reference-tracks.html" data-cat="Mixing"><span class="g-cat">Mixing · 3 min</span><h3>Using reference tracks</h3><p>How to pick references that get you the sound you&#x27;re hearing in your head.</p><span class="g-go">Read the sheet →</span></a><a class="guide" href="guides/release-checklist.html" data-cat="Release"><span class="g-cat">Release · 4 min</span><h3>Release checklist</h3><p>Everything to have ready before you upload, from metadata to pitching for playlists.</p><span class="g-go">Read the sheet →</span></a><a class="guide" href="guides/mix-feedback-and-revisions.html" data-cat="Mixing"><span class="g-cat">Mixing · 3 min</span><h3>Giving mix feedback</h3><p>How to give notes that get you the changes you want, using your included round wisely.</p><span class="g-go">Read the sheet →</span></a></div>
+<!--/GUIDES--></div>
 </div></section>
 
 <section class="s" id="spotlight"><div class="wrap">
@@ -680,7 +703,7 @@ nav.main a.cur{color:var(--ink)}
 
 <footer class="site"><div class="wrap">
 <div class="big" aria-hidden="true">The Audio Box</div>
-<div class="foot"><div class="links"><a data-insta href="https://instagram.com/theaudiobox_" target="_blank" rel="noopener">Instagram @theaudiobox_</a><a href="#blog">Blog</a><a href="#subscribe">Mailing list</a><a href="#about">About us</a><a href="mailto:theaudiobox.pr@gmail.com">theaudiobox.pr@gmail.com</a><a href="#privacy">Privacy</a></div>
+<div class="foot"><div class="links"><a data-insta href="https://instagram.com/theaudiobox_" target="_blank" rel="noopener">Instagram @theaudiobox_</a><a href="#blog">Blog</a><a href="#guides">Guidance sheets</a><a href="#subscribe">Mailing list</a><a href="#about">About us</a><a href="mailto:theaudiobox.pr@gmail.com">theaudiobox.pr@gmail.com</a><a href="#privacy">Privacy</a></div>
 <div>© <span data-year></span> The Audio Box</div></div></div></footer>
 <script>/* ============ EDIT ME ============ */
 // Team on the About us page: add { name, role, photo } (photo = image path, e.g. 'team/name.jpg')
@@ -779,6 +802,15 @@ const fmt = s => new Date(s + 'T12:00:00').toLocaleDateString('en-GB', { day: 'n
   const esc = t => String(t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   g.innerHTML = TEAM.map(m => `<div class="tm"><figure class="frame">${m.photo ? `<img src="${esc(m.photo)}" alt="${esc(m.name)}" loading="lazy">` : ''}</figure><h3>${esc(m.name)}</h3><p>${esc(m.role || '')}</p></div>`).join('');
   document.getElementById('teamEmpty').hidden = true;
+})();
+
+// ---------- guidance sheet filters ----------
+(function () {
+  const bs = document.querySelectorAll('.gf'); if (!bs.length) return;
+  bs.forEach(b => b.addEventListener('click', () => {
+    bs.forEach(x => x.classList.toggle('on', x === b));
+    document.querySelectorAll('.guide').forEach(g => g.hidden = !(b.dataset.f === 'all' || g.dataset.cat === b.dataset.f));
+  }));
 })();
 
 // ---------- mobile menu ----------
