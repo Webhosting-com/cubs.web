@@ -487,7 +487,7 @@ nav.main a.cur{color:var(--ink)}
 <div class="spot-nav"><span class="spot-count" id="spotCount" aria-live="polite">01 / 06</span><button type="button" class="arrow ghost" id="spotPrev" aria-label="Previous spotlight" disabled>&larr;</button><button type="button" class="arrow" id="spotNext" aria-label="Next spotlight">&rarr;</button></div></div>
 <div class="spot-track" id="spotTrack" tabindex="0" aria-label="Artist spotlights"></div>
 <form class="enq" id="featForm" novalidate style="margin-top:40px">
-<div class="enq-head"><span class="eyebrow">Get featured</span><h3>Want to be our next spotlight?</h3><p>Independent artist in London, Gloucestershire or beyond? Fill this in and it opens an email to us with everything ready. Attach your best photo before you hit send. We read every one.</p></div>
+<div class="enq-head"><span class="eyebrow">Get featured</span><h3>Want to be our next spotlight?</h3><p>Independent artist in London, Gloucestershire or beyond? Fill this in and it opens an email to us with everything ready. Attach two of your best photos before you hit send. We read every one.</p></div>
 <div class="enq-grid">
 <div class="field"><label for="ftName">Artist name <span class="req">*</span></label><input id="ftName" required><span class="err">Please add your artist name</span></div>
 <div class="field"><label for="ftIg">Instagram <span class="req">*</span></label><input id="ftIg" placeholder="@yourname" required><span class="err">Please add your Instagram</span></div>
@@ -762,7 +762,7 @@ const fmt = s => new Date(s + 'T12:00:00').toLocaleDateString('en-GB', { day: 'n
       'Artist name: ' + v('ftName'), 'Instagram: ' + v('ftIg'), 'Based in: ' + v('ftArea'), 'Genre: ' + v('ftGenre'),
       'Track: ' + v('ftTrack'), 'Link: ' + v('ftLink'), '', 'Bio:', v('ftBio'), '', 'Story behind the track:', v('ftStory') || '-', '',
       'I confirm I made this music (or have the rights to it) and I am happy for The Audio Box to feature it.', '',
-      '>> Remember to attach your best photo (portrait works best) before you send.'].join('\n');
+      '>> Remember to attach two photos (portrait works best) before you send.'].join('\n');
     location.href = 'mailto:theaudiobox.pr@gmail.com?subject=' + encodeURIComponent('TAB Spotlight: ' + v('ftName')) + '&body=' + encodeURIComponent(body);
   });
 })();
