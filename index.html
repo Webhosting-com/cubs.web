@@ -452,6 +452,25 @@ nav.main a.cur{color:var(--ink)}
 .svc>div{border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:24px}
 .svc h3{font-family:'Oswald',sans-serif;font-weight:300;color:var(--accent);font-size:28px;letter-spacing:.02em;line-height:1.05;margin:10px 0 10px;overflow-wrap:anywhere}
 .svc .num{color:var(--accent);font-family:'Oswald',sans-serif;font-weight:300;font-size:18px}.svc p{color:var(--muted);font-size:15px}
+/* services */
+.svc-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px}
+.svc-card{grid-column:span 2}.svc-card:nth-child(5),.svc-card:nth-child(6){grid-column:span 3}
+.svc-card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:26px;display:flex;flex-direction:column;gap:12px}
+.svc-card>p{color:var(--muted);font-size:15px;line-height:1.55;margin:0;flex:1}
+.svc-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.svc-top h3{font-family:'Oswald',sans-serif;font-weight:400;font-size:24px;text-transform:uppercase;letter-spacing:.02em;margin:0;color:var(--ink)}
+.svc-top b{font-family:'Oswald',sans-serif;font-weight:400;color:var(--accent);font-size:26px;white-space:nowrap}.svc-top b small{font-size:13px;color:var(--muted);margin-left:2px}
+.svc-card .btn{align-self:flex-start}
+.svc-book{grid-column:1/-1;border-color:#3a2418;background:linear-gradient(180deg,#17120f,var(--panel))}
+.svc-book>p{flex:none;max-width:720px}
+.enq.sb-form{margin:6px 0 0;display:grid;gap:14px;padding:0;border:0;background:none;box-shadow:none}
+.sb-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.sb-extras{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.sb-extras label{white-space:nowrap;display:inline-flex;align-items:center;gap:8px;border:1px solid #3a3631;border-radius:999px;padding:9px 14px;font-size:14px;font-weight:500;cursor:pointer;color:var(--ink)}
+.sb-extras input{width:auto;accent-color:var(--accent)}
+.sb-extras label:has(input:checked){border-color:var(--accent);background:rgba(240,74,18,.12)}
+@media(max-width:900px){.svc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.svc-card,.svc-card:nth-child(5),.svc-card:nth-child(6){grid-column:auto}.svc-book{grid-column:1/-1}}
+@media(max-width:600px){.svc-grid{grid-template-columns:1fr}.svc-card,.svc-card:nth-child(5),.svc-card:nth-child(6){grid-column:auto}.sb-row{grid-template-columns:1fr}.svc-card{padding:20px}}
 .prices{border-top:1px solid var(--line)}
 .pr{display:flex;gap:20px;justify-content:space-between;align-items:baseline;padding:20px 2px;border-bottom:1px solid var(--line)}
 .pr h3{font-family:'Oswald',sans-serif;font-weight:300;color:var(--ink);font-size:24px;letter-spacing:.02em;margin:0 0 4px}
@@ -535,36 +554,30 @@ nav.main a.cur{color:var(--ink)}
 </div></div></section>
 
 <section class="s" id="services"><div class="wrap">
-<div class="sh"><h2>Services</h2><p>Studio time, mixing and mastering, with engineers, producers and creatives across London and Gloucestershire.</p></div>
-<div class="prices">
-<div class="pr"><div><h3>Studio session</h3><p>Recording and engineering. Price depends on the day, time, studio and engineer, so tell us what you need and we'll quote.</p></div><b>Quote</b></div>
-<div class="pr"><div><h3>Mixing</h3><p>A full mix from your stems, with two rounds of changes.</p></div><b>£100<small>/track</small></b></div>
-<div class="pr"><div><h3>Mix &amp; master</h3><p>Mix plus a streaming-ready master, two rounds of changes.</p></div><b>£125<small>/track</small></b></div>
-<div class="pr"><div><h3>Mastering</h3><p>A streaming-ready master from your final mix.</p></div><b>£50<small>/track</small></b></div>
-<div class="pr"><div><h3>Production</h3><p>Beats and full production, built with you.</p></div><b>Quote</b></div>
-<div class="pr"><div><h3>Photo &amp; video</h3><p>Shoots and visuals from photographers and videographers in the TAB network.</p></div><b>Quote</b></div>
+<div class="sh"><h2>Services</h2><p>Enquire or book straight on WhatsApp. We reply with prices and times.</p></div>
+<div class="svc-grid">
+<article class="svc-card svc-book" id="studioBook">
+<div class="svc-top"><h3>Studio session</h3><b>Quote</b></div>
+<p>Recording and engineering in our studios across Cheltenham, Gloucestershire and South London. The price depends on the day, time, studio and engineer, so fill this in and we'll send a quote.</p>
+<form class="enq sb-form" id="studioForm" novalidate>
+<div class="sb-row">
+<div class="field"><label for="sbName">Your name <span class="req">*</span></label><input id="sbName" autocomplete="name" placeholder="Artist or full name"><p class="err">Add your name.</p></div>
+<div class="field"><label for="sbDate">Proposed date <span class="req">*</span></label><input id="sbDate" type="date"><p class="err">Pick a date.</p></div>
 </div>
-<form class="enq" id="enqForm" novalidate>
-<div class="enq-head"><span class="eyebrow">Enquire</span><h3>Book or enquire</h3><p>Tap your answers and send it on WhatsApp or by email, ready written. We'll come back with a price and times that work. Prefer email? <a href="mailto:theaudiobox.pr@gmail.com">theaudiobox.pr@gmail.com</a></p></div>
-<div class="eq"><p class="ql">What's it for? <span class="req">*</span></p>
-<div class="chips" data-q="svc" role="radiogroup" aria-label="What's it for?">
-<button type="button" data-v="rec">Studio session</button><button type="button" data-v="mix">Mixing</button><button type="button" data-v="mixmaster">Mix &amp; master</button><button type="button" data-v="master">Mastering</button><button type="button" data-v="prod">Production</button><button type="button" data-v="team">Photo / video</button><button type="button" data-v="join">Join the TAB team</button><button type="button" data-v="other">Something else</button>
-</div><span class="err">Pick one</span></div>
-<div class="eq" data-for="rec"><p class="ql">How long?</p><div class="chips" data-q="hours"><button type="button" data-v="1 hour">1 hr</button><button type="button" data-v="2 hours">2 hrs</button><button type="button" data-v="3 hours">3 hrs</button><button type="button" data-v="4 hours">4 hrs</button><button type="button" data-v="5+ hours">5+ hrs</button><button type="button" data-v="">Not sure</button></div></div>
-<div class="eq" data-for="rec"><p class="ql">Where?</p><div class="chips" data-q="where"><button type="button" data-v="London">London</button><button type="button" data-v="Gloucestershire">Gloucestershire</button><button type="button" data-v="">Not sure</button></div></div>
-<div class="eq" data-for="rec"><p class="ql">Engineer?</p><div class="chips" data-q="eng"><button type="button" data-v="">Whoever's free</button><button type="button" data-v="I'm bringing my own engineer">Bringing my own</button><button type="button" data-v="I have someone from TAB in mind">Someone from TAB</button></div></div>
-<div class="eq" data-for="rec"><p class="ql">When? <span class="optl">(optional)</span></p><div class="row2"><select id="enqDay" aria-label="Day"></select><select id="enqTime" aria-label="Time of day"><option value="">Any time</option><option>Morning</option><option>Afternoon</option><option>Evening</option></select></div></div>
-<div class="eq" data-for="mix mixmaster master"><p class="ql">How many tracks?</p><div class="step"><button type="button" data-step="-1" aria-label="Fewer">−</button><output id="enqTracks">1</output><button type="button" data-step="1" aria-label="More">+</button></div><p class="est" id="enqEst"></p></div>
-<div class="eq" data-for="prod"><p class="ql">What do you need?</p><div class="chips" data-q="prodwhat"><button type="button" data-v="a custom beat">A custom beat</button><button type="button" data-v="full production on a track">Full production</button><button type="button" data-v="a few beats for a project">Beats for a project</button></div></div>
-<div class="eq" data-for="team"><p class="ql">Who do you need?</p><div class="chips" data-q="who"><button type="button" data-v="a photographer">Photographer</button><button type="button" data-v="a videographer">Videographer</button></div></div>
-<div class="eq" data-for="join"><p class="ql">What do you do?</p><div class="chips" data-q="role"><button type="button" data-v="an engineer">Engineer</button><button type="button" data-v="a producer">Producer</button><button type="button" data-v="a photographer">Photographer</button><button type="button" data-v="a videographer">Videographer</button><button type="button" data-v="">Something else</button></div></div>
-<div class="enq-grid">
-<div class="field"><label for="enqName">Your name or artist name <span class="req">*</span></label><input id="enqName" autocomplete="name" required><span class="err">Please add your name</span></div>
-<div class="field"><label for="enqLink" id="enqLinkL">Link to your music <span class="optl">(optional)</span></label><input id="enqLink" placeholder="Instagram, Spotify, SoundCloud…"></div>
-<div class="field wide"><label for="enqNotes">Anything else? <span class="optl">(optional)</span></label><textarea id="enqNotes" rows="3" placeholder="A few words about the project"></textarea></div>
+<div class="sb-row">
+<div class="field"><label for="sbWhat">What do you want to record? <span class="req">*</span></label><input id="sbWhat" placeholder="e.g. vocals on 2 tracks, a full band, a podcast"><p class="err">Tell us what you're recording.</p></div>
+<div class="field"><label for="sbWhere">Where are you based? <span class="req">*</span></label><input id="sbWhere" placeholder="e.g. Cheltenham, Gloucester, South London"><p class="err">Tell us where you are.</p></div>
 </div>
-<div class="cta-row"><button class="btn" type="submit" data-via="wa">Send on WhatsApp</button><button class="btn ghost" type="submit" data-via="mail">Send by email</button></div>
+<div class="field"><label>Anything else? <span class="optl">(optional)</span></label>
+<div class="sb-extras">
+<label><input type="checkbox" value="Mixing"> Mixing</label><label><input type="checkbox" value="Mastering"> Mastering</label><label><input type="checkbox" value="Mix &amp; master"> Mix &amp; master</label><label><input type="checkbox" value="Production"> Production</label><label><input type="checkbox" value="Photographer"> Photographer</label><label><input type="checkbox" value="Videographer"> Videographer</label>
+</div></div>
+<div class="field"><label for="sbNotes">Notes <span class="optl">(optional)</span></label><input id="sbNotes" placeholder="Times that suit you, a link to your music, anything we should know"></div>
+<button class="btn" type="submit">Book on WhatsApp</button>
 </form>
+</article>
+<article class="svc-card"><div class="svc-top"><h3>Mixing</h3><b>£100<small>/track</small></b></div><p>A full mix from your stems, with two rounds of changes.</p><a class="btn ghost svc-wa" href="#" data-wa="mix" target="_blank" rel="noopener">Enquire on WhatsApp</a></article><article class="svc-card"><div class="svc-top"><h3>Mix &amp; master</h3><b>£125<small>/track</small></b></div><p>Mix plus a streaming-ready master, two rounds of changes.</p><a class="btn ghost svc-wa" href="#" data-wa="mixmaster" target="_blank" rel="noopener">Enquire on WhatsApp</a></article><article class="svc-card"><div class="svc-top"><h3>Mastering</h3><b>£50<small>/track</small></b></div><p>A streaming-ready master from your final mix.</p><a class="btn ghost svc-wa" href="#" data-wa="master" target="_blank" rel="noopener">Enquire on WhatsApp</a></article><article class="svc-card"><div class="svc-top"><h3>Production</h3><b>Quote<small></small></b></div><p>Beats and full production, built with you.</p><a class="btn ghost svc-wa" href="#" data-wa="prod" target="_blank" rel="noopener">Enquire on WhatsApp</a></article><article class="svc-card"><div class="svc-top"><h3>Photo &amp; video</h3><b>Quote<small></small></b></div><p>Shoots and visuals from photographers and videographers in the TAB network.</p><a class="btn ghost svc-wa" href="#" data-wa="photo" target="_blank" rel="noopener">Enquire on WhatsApp</a></article>
+</div>
 </div></section>
 <section class="s" id="subscribe"><div class="wrap"><div class="sub">
 <span class="eyebrow">The TAB mailing list</span>
@@ -728,48 +741,38 @@ const fmt = s => new Date(s + 'T12:00:00').toLocaleDateString('en-GB', { day: 'n
   d.addEventListener('click', e => { if (e.target.closest('a')) set(false); });
 })();
 
-// ---------- enquiry form -> WhatsApp or email ----------
+// ---------- services -> WhatsApp ----------
 (function () {
-  const f = document.getElementById('enqForm'); if (!f) return;
-  const $ = id => document.getElementById(id), v = id => ($(id).value || '').trim(), pick = {};
-  // next 14 days for the day dropdown
-  const day = $('enqDay'); day.innerHTML = '<option value="">Any day</option>';
-  for (let i = 1; i <= 14; i++) { const d = new Date(); d.setDate(d.getDate() + i); day.innerHTML += `<option>${d.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' })}</option>`; }
-  const sync = () => {
-    f.querySelectorAll('[data-for]').forEach(el => el.hidden = !el.dataset.for.split(' ').includes(pick.svc));
-    $('enqLinkL').firstChild.textContent = pick.svc === 'join' ? 'Link to your work ' : 'Link to your music ';
+  const wa = t => 'https://wa.me/' + CONFIG.WHATSAPP + '?text=' + encodeURIComponent(t);
+  const hi = "Hi, I found The Audio Box website. ";
+  const MSG = {
+    mix: "I'd like to enquire about mixing (£100 per track). Number of tracks: \nLink to my music: ",
+    mixmaster: "I'd like to enquire about mix & master (£125 per track). Number of tracks: \nLink to my music: ",
+    master: "I'd like to enquire about mastering (£50 per track). Number of tracks: \nLink to my music: ",
+    prod: "I'd like to talk about production. What I'm working on: ",
+    photo: "I'd like to enquire about a photographer / videographer. What it's for: \nDate: \nWhere: "
   };
-  f.querySelectorAll('.chips').forEach(g => g.addEventListener('click', e => {
-    const b = e.target.closest('button'); if (!b) return;
-    g.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b ? 'true' : 'false'));
-    pick[g.dataset.q] = b.dataset.v;
-    if (g.dataset.q === 'svc') { g.closest('.eq').classList.remove('bad'); sync(); est(); }
-  }));
-  f.querySelectorAll('.chips button').forEach(b => b.setAttribute('aria-pressed', 'false'));
-  let tracks = 1; const PRICE = { mix: 100, mixmaster: 125, master: 50 };
-  const est = () => { const p = PRICE[pick.svc]; $('enqEst').textContent = p ? 'Estimate: £' + p * tracks + (tracks > 1 ? ' for ' + tracks + ' tracks' : '') : ''; };
-  f.querySelectorAll('[data-step]').forEach(b => b.addEventListener('click', () => { tracks = Math.max(1, Math.min(20, tracks + +b.dataset.step)); $('enqTracks').textContent = tracks; est(); }));
-  $('enqName').addEventListener('input', () => $('enqName').closest('.field').classList.remove('bad'));
-  sync();
+  document.querySelectorAll('[data-wa]').forEach(a => a.href = wa(hi + (MSG[a.dataset.wa] || '')));
+  const f = document.getElementById('studioForm'); if (!f) return;
+  const $ = id => document.getElementById(id), v = id => ($(id).value || '').trim();
+  const d = $('sbDate'); d.min = new Date().toISOString().slice(0, 10);
+  f.querySelectorAll('input').forEach(el => el.addEventListener('input', () => { const fl = el.closest('.field'); if (fl) fl.classList.remove('bad'); }));
   f.addEventListener('submit', e => {
-    e.preventDefault(); const via = (e.submitter && e.submitter.dataset.via) || 'wa';
-    const name = v('enqName'), k = pick.svc;
-    $('enqName').closest('.field').classList.toggle('bad', !name); f.querySelector('[data-q="svc"]').closest('.eq').classList.toggle('bad', !k);
-    if (!k) { f.querySelector('[data-q="svc"]').scrollIntoView({ block: 'center', behavior: 'smooth' }); return; }
-    if (!name) { $('enqName').focus(); return; }
-    const extra = []; let opener;
-    if (k === 'rec') { opener = "I'd like to book a studio session."; if (pick.hours) extra.push('Length: ' + pick.hours); if (pick.where) extra.push('Where: ' + pick.where); if (pick.eng) extra.push('Engineer: ' + pick.eng); const when = [v('enqDay'), v('enqTime')].filter(Boolean).join(', '); if (when) extra.push('When: ' + when); }
-    else if (PRICE[k]) { const w = { mix: 'mixing', mixmaster: 'mixing and mastering', master: 'mastering' }[k]; opener = `I'd like ${w} on ${tracks > 1 ? tracks + ' tracks' : 'a track'} (estimate £${PRICE[k] * tracks}).`; }
-    else if (k === 'prod') opener = `I'd like to talk about production${pick.prodwhat ? ': ' + pick.prodwhat : ''}.`;
-    else if (k === 'team') opener = `I'm looking for ${pick.who || 'a photographer or videographer'} from the TAB network.`;
-    else if (k === 'join') opener = pick.role ? `I'm ${pick.role} and I'd like to join the TAB team.` : "I'd like to join the TAB team.";
-    else opener = "I've got a question.";
-    if (v('enqLink')) extra.push((k === 'join' ? 'My work: ' : 'My music: ') + v('enqLink'));
-    if (v('enqNotes')) extra.push('', v('enqNotes'));
-    const msg = [`Hi, it's ${name}. I found you through The Audio Box website.`, '', opener, ...(extra.length ? [''].concat(extra) : [])].join('\n');
-    const label = { rec: 'Studio session', mix: 'Mixing', mixmaster: 'Mix & master', master: 'Mastering', prod: 'Production', team: 'Photo / video', join: 'Join the team', other: 'Question' }[k];
-    if (via === 'mail') location.href = 'mailto:theaudiobox.pr@gmail.com?subject=' + encodeURIComponent('TAB Enquiry: ' + label + ' - ' + name) + '&body=' + encodeURIComponent(msg);
-    else window.open('https://wa.me/' + CONFIG.WHATSAPP + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+    e.preventDefault();
+    let ok = true;
+    ['sbName', 'sbDate', 'sbWhat', 'sbWhere'].forEach(id => { if (!v(id)) { $(id).closest('.field').classList.add('bad'); ok = false; } });
+    if (!ok) { f.querySelector('.bad input').focus(); return; }
+    const date = new Date(v('sbDate') + 'T12:00').toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+    const extras = [...f.querySelectorAll('.sb-extras input:checked')].map(i => i.value);
+    const msg = [
+      `Hi, it's ${v('sbName')}. I found The Audio Box website and I'd like to book a studio session.`, '',
+      'Proposed date: ' + date,
+      'Recording: ' + v('sbWhat'),
+      'Based in: ' + v('sbWhere'),
+      'Also need: ' + (extras.length ? extras.join(', ') : 'nothing else for now'),
+      v('sbNotes') ? 'Notes: ' + v('sbNotes') : ''
+    ].filter((l, i) => l || i === 1).join('\n');
+    window.open(wa(msg), '_blank', 'noopener');
   });
 })();
 
