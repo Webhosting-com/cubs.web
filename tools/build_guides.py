@@ -78,6 +78,13 @@ article ul,article ol{{padding-left:22px}}article li{{margin:6px 0}}article li::
 .more ul{{list-style:none;padding:0;margin:0 0 60px;display:grid;grid-template-columns:1fr 1fr;gap:10px}}
 .more a{{display:block;border:1px solid var(--line);border-radius:10px;padding:14px 16px;text-decoration:none;font-weight:600;background:var(--panel)}}.more a:hover{{border-color:var(--accent)}}
 .more small{{display:block;color:var(--accent);font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:2px}}
+.gate{{position:relative;border:1px solid var(--accent);border-radius:16px;padding:28px;margin:6px 0 30px;background:linear-gradient(135deg,rgba(240,74,18,.14),var(--panel) 60%)}}
+.gate::before{{content:"";position:absolute;left:0;right:0;top:-110px;height:104px;background:linear-gradient(rgba(11,10,9,0),var(--bg));pointer-events:none}}
+.gate h3{{font-family:Anton,sans-serif;font-weight:400;text-transform:uppercase;font-size:34px;margin:8px 0 8px;line-height:1}}.gate p{{color:var(--muted);margin:0 0 16px}}
+.gate form{{display:flex;gap:10px;flex-wrap:wrap}}.gate input{{flex:1 1 240px;background:#0B0A09;border:1px solid #3a3631;border-radius:999px;color:var(--ink);font:16px Inter,sans-serif;padding:12px 18px}}.gate input:focus{{outline:2px solid var(--accent);border-color:transparent}}
+.gate .gate-err{{color:#ffb020;margin:10px 0 0}}.gate .gate-fine{{font-size:13px;margin:14px 0 0}}
+.linkbtn{{background:none;border:0;color:var(--ink);text-decoration:underline;font:inherit;cursor:pointer;padding:0}}
+.unlocked .gate{{display:none}}
 footer{{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-size:13px}}
 @media(max-width:600px){{.hlinks{{display:none}}.more ul{{grid-template-columns:1fr}}body{{font-size:16px}}}}
 @media print{{body *{{display:none!important}}body::after{{content:"TAB guidance sheets can be read online at theaudiobox.co.uk";display:block;font:14pt Inter,sans-serif;color:#111;padding:40px}}body{{background:#fff}}}}
@@ -93,7 +100,18 @@ footer{{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-
 <div class="meta"><span class="pill">{mins} min read</span></div>
 </section>
 <article>
-{body}
+{preview}
+<div class="gate" id="gate">
+<span class="eyebrow">Free for mailing list members</span>
+<h3>Read the full sheet</h3>
+<p>Join the TAB mailing list to unlock this sheet and every other guidance sheet. You'll also get the blog every Friday.</p>
+<form id="gateForm" novalidate><input type="email" id="gateEmail" placeholder="Your email address" autocomplete="email" required><button class="btn" type="submit">Join &amp; unlock</button></form>
+<p class="gate-err" id="gateErr" hidden>Enter a valid email address.</p>
+<p class="gate-fine">Free. Unsubscribe any time. Signing up opens the TAB mailing list page in a new tab. <button type="button" class="linkbtn" id="gateHave">Already subscribed? Unlock</button></p>
+</div>
+<div class="locked" id="locked" hidden>
+{rest}
+</div>
 </article>
 <section class="cta">
 <h3>Want us to handle it?</h3>
@@ -103,6 +121,17 @@ footer{{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-
 <section class="more"><h3>More guidance sheets</h3><ul>{more}</ul></section>
 </main>
 <footer><div class="wrap">© The Audio Box · <a href="/">theaudiobox.co.uk</a></div></footer>
+<script>
+(function(){{var K='tab_guides_member',NEWS='https://audios-newsletter.beehiiv.com/subscribe';
+function ok(){{try{{return localStorage.getItem(K)==='1'}}catch(e){{return false}}}}
+function unlock(){{try{{localStorage.setItem(K,'1')}}catch(e){{}}document.getElementById('locked').hidden=false;document.body.classList.add('unlocked')}}
+if(ok()||/[?&]member=1/.test(location.search))unlock();
+document.getElementById('gateHave').onclick=unlock;
+document.getElementById('gateForm').onsubmit=function(e){{e.preventDefault();var v=document.getElementById('gateEmail').value.trim(),err=document.getElementById('gateErr');
+if(!/^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$/.test(v)){{err.hidden=false;return}}err.hidden=true;
+window.open(NEWS+'?email='+encodeURIComponent(v)+'&utm_source=guides','_blank','noopener');unlock();document.getElementById('locked').scrollIntoView({{behavior:'smooth'}})}};
+}})();
+</script>
 </body></html>
 '''
 
@@ -111,7 +140,10 @@ for g in GUIDES:
     others = [o for o in GUIDES if o['slug'] != g['slug']][:6]
     more = ''.join('<li><a href="%s.html"><small>%s</small>%s</a></li>' % (o['slug'], E(o['cat']), E(o['title'])) for o in others)
     wa = E(WA + urllib.parse.quote('Hi, I found The Audio Box website. I read the "%s" guide and have a question: ' % g['title']))
-    page = PAGE.format(title=E(g['title']), summary=E(g['summary']), cat=E(g['cat']), mins=g['mins'], body=md(g['body']), more=more, wa=wa)
+    full = md(g['body']); i = [m.start() for m in re.finditer('<h2>', full)]
+    cut = i[1] if len(i) > 1 else (i[0] if i else len(full))
+    pv, rt = full[:cut], full[cut:]
+    page = PAGE.format(title=E(g['title']), summary=E(g['summary']), cat=E(g['cat']), mins=g['mins'], preview=pv, rest=rt, more=more, wa=wa)
     open(os.path.join(ROOT, 'guides', g['slug'] + '.html'), 'w', encoding='utf-8').write(page)
 
 # home page cards between the markers
@@ -121,10 +153,10 @@ cats = []
 for g in GUIDES:
     if g['cat'] not in cats: cats.append(g['cat'])
 cards = ''.join(
-    '<a class="guide" href="guides/%s.html" data-cat="%s"><span class="g-cat">%s · %d min</span><h3>%s</h3><p>%s</p><span class="g-go">Read the sheet →</span></a>'
+    '<a class="guide" href="guides/%s.html" data-cat="%s"><span class="g-cat">%s · %d min</span><h3>%s</h3><p>%s</p><span class="g-go">Members · read the sheet →</span></a>'
     % (g['slug'], E(g['cat']), E(g['cat']), g['mins'], E(g['title']), E(g['summary'])) for g in GUIDES)
 filters = '<button type="button" class="gf on" data-f="all">All</button>' + ''.join('<button type="button" class="gf" data-f="%s">%s</button>' % (E(c), E(c)) for c in cats)
-block = '<!--GUIDES-->\n<div class="guides-head"><div><span class="eyebrow">Free from TAB</span><h3 class="guides-title">Guidance sheets</h3><p>Step-by-step guidance on sending stems, bouncing files, using plug-ins and more. Tap any sheet to read it.</p></div></div>\n<div class="guide-filters" role="group" aria-label="Filter guides">' + filters + '</div>\n<div class="guide-grid">' + cards + '</div>\n<!--/GUIDES-->'
+block = '<!--GUIDES-->\n<div class="guides-head"><div><span class="eyebrow">Free from TAB</span><h3 class="guides-title">Guidance sheets</h3><p>Step-by-step guidance on sending stems, bouncing files, using plug-ins and more. Free for TAB mailing list members. Join once to unlock every sheet.</p></div></div>\n<div class="guide-filters" role="group" aria-label="Filter guides">' + filters + '</div>\n<div class="guide-grid">' + cards + '</div>\n<!--/GUIDES-->'
 a, b = s.index('<!--GUIDES-->'), s.index('<!--/GUIDES-->') + len('<!--/GUIDES-->')
 s = s[:a] + block + s[b:]
 open(P, 'w', encoding='utf-8').write(s)

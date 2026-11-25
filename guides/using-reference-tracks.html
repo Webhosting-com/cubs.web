@@ -40,6 +40,13 @@ article ul,article ol{padding-left:22px}article li{margin:6px 0}article li::mark
 .more ul{list-style:none;padding:0;margin:0 0 60px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .more a{display:block;border:1px solid var(--line);border-radius:10px;padding:14px 16px;text-decoration:none;font-weight:600;background:var(--panel)}.more a:hover{border-color:var(--accent)}
 .more small{display:block;color:var(--accent);font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:2px}
+.gate{position:relative;border:1px solid var(--accent);border-radius:16px;padding:28px;margin:6px 0 30px;background:linear-gradient(135deg,rgba(240,74,18,.14),var(--panel) 60%)}
+.gate::before{content:"";position:absolute;left:0;right:0;top:-110px;height:104px;background:linear-gradient(rgba(11,10,9,0),var(--bg));pointer-events:none}
+.gate h3{font-family:Anton,sans-serif;font-weight:400;text-transform:uppercase;font-size:34px;margin:8px 0 8px;line-height:1}.gate p{color:var(--muted);margin:0 0 16px}
+.gate form{display:flex;gap:10px;flex-wrap:wrap}.gate input{flex:1 1 240px;background:#0B0A09;border:1px solid #3a3631;border-radius:999px;color:var(--ink);font:16px Inter,sans-serif;padding:12px 18px}.gate input:focus{outline:2px solid var(--accent);border-color:transparent}
+.gate .gate-err{color:#ffb020;margin:10px 0 0}.gate .gate-fine{font-size:13px;margin:14px 0 0}
+.linkbtn{background:none;border:0;color:var(--ink);text-decoration:underline;font:inherit;cursor:pointer;padding:0}
+.unlocked .gate{display:none}
 footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-size:13px}
 @media(max-width:600px){.hlinks{display:none}.more ul{grid-template-columns:1fr}body{font-size:16px}}
 @media print{body *{display:none!important}body::after{content:"TAB guidance sheets can be read online at theaudiobox.co.uk";display:block;font:14pt Inter,sans-serif;color:#111;padding:40px}body{background:#fff}}
@@ -58,10 +65,21 @@ footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-s
 <p>A reference track is a released song you love the sound of. It&#x27;s the fastest way to show us what you want.</p>
 <h2>Choosing references</h2>
 <ul><li>Pick songs in a similar genre and tempo to yours.</li><li>Choose them for a specific reason: the vocal sound, the 808, the space, the energy.</li><li>One or two is enough. Ten pulls the mix in every direction.</li></ul>
+
+<div class="gate" id="gate">
+<span class="eyebrow">Free for mailing list members</span>
+<h3>Read the full sheet</h3>
+<p>Join the TAB mailing list to unlock this sheet and every other guidance sheet. You'll also get the blog every Friday.</p>
+<form id="gateForm" novalidate><input type="email" id="gateEmail" placeholder="Your email address" autocomplete="email" required><button class="btn" type="submit">Join &amp; unlock</button></form>
+<p class="gate-err" id="gateErr" hidden>Enter a valid email address.</p>
+<p class="gate-fine">Free. Unsubscribe any time. Signing up opens the TAB mailing list page in a new tab. <button type="button" class="linkbtn" id="gateHave">Already subscribed? Unlock</button></p>
+</div>
+<div class="locked" id="locked" hidden>
 <h2>Sending them</h2>
 <ul><li>Send streaming links or high-quality files, not screen recordings.</li><li>Tell us what you like about each one: &quot;the vocal sits on top like this&quot; or &quot;the drums hit like this&quot;.</li></ul>
 <h2>Listening properly</h2>
 <ul><li>Compare at the same volume. A louder song will always seem better.</li><li>Listen on the systems your fans will use: phone, earphones, car, laptop.</li></ul>
+</div>
 </article>
 <section class="cta">
 <h3>Want us to handle it?</h3>
@@ -71,4 +89,15 @@ footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-s
 <section class="more"><h3>More guidance sheets</h3><ul><li><a href="how-to-send-stems.html"><small>Mixing</small>How to send stems</a></li><li><a href="bouncing-and-export-settings.html"><small>Mixing</small>Bouncing &amp; export settings</a></li><li><a href="exporting-stems-in-your-daw.html"><small>Mixing</small>Exporting stems in your DAW</a></li><li><a href="using-plug-ins-the-right-way.html"><small>Production</small>Using plug-ins the right way</a></li><li><a href="gain-staging-basics.html"><small>Recording</small>Gain staging basics</a></li><li><a href="recording-vocals-at-home.html"><small>Recording</small>Recording vocals at home</a></li></ul></section>
 </main>
 <footer><div class="wrap">© The Audio Box · <a href="/">theaudiobox.co.uk</a></div></footer>
+<script>
+(function(){var K='tab_guides_member',NEWS='https://audios-newsletter.beehiiv.com/subscribe';
+function ok(){try{return localStorage.getItem(K)==='1'}catch(e){return false}}
+function unlock(){try{localStorage.setItem(K,'1')}catch(e){}document.getElementById('locked').hidden=false;document.body.classList.add('unlocked')}
+if(ok()||/[?&]member=1/.test(location.search))unlock();
+document.getElementById('gateHave').onclick=unlock;
+document.getElementById('gateForm').onsubmit=function(e){e.preventDefault();var v=document.getElementById('gateEmail').value.trim(),err=document.getElementById('gateErr');
+if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)){err.hidden=false;return}err.hidden=true;
+window.open(NEWS+'?email='+encodeURIComponent(v)+'&utm_source=guides','_blank','noopener');unlock();document.getElementById('locked').scrollIntoView({behavior:'smooth'})};
+})();
+</script>
 </body></html>
