@@ -554,7 +554,7 @@ nav.main a.cur{color:var(--ink)}
 </div></div></section>
 
 <section class="s" id="services"><div class="wrap">
-<div class="sh"><h2>Services</h2><p>Enquire or book straight on WhatsApp. We reply with prices and times.</p></div>
+<div class="sh"><h2>Services</h2><p>Book straight on WhatsApp. We reply with prices and times.</p></div>
 <div class="svc-grid">
 <article class="svc-card svc-book" id="studioBook">
 <div class="svc-top"><h3>Studio session</h3><b>Quote</b></div>
@@ -576,7 +576,7 @@ nav.main a.cur{color:var(--ink)}
 <button class="btn" type="submit">Book on WhatsApp</button>
 </form>
 </article>
-<article class="svc-card"><div class="svc-top"><h3>Mixing</h3><b>£100<small>/track</small></b></div><p>A full mix from your stems, with two rounds of changes.</p><a class="btn ghost svc-wa" href="#" data-wa="mix" target="_blank" rel="noopener">Enquire on WhatsApp</a></article><article class="svc-card"><div class="svc-top"><h3>Mix &amp; master</h3><b>£125<small>/track</small></b></div><p>Mix plus a streaming-ready master, two rounds of changes.</p><a class="btn ghost svc-wa" href="#" data-wa="mixmaster" target="_blank" rel="noopener">Enquire on WhatsApp</a></article><article class="svc-card"><div class="svc-top"><h3>Mastering</h3><b>£50<small>/track</small></b></div><p>A streaming-ready master from your final mix.</p><a class="btn ghost svc-wa" href="#" data-wa="master" target="_blank" rel="noopener">Enquire on WhatsApp</a></article><article class="svc-card"><div class="svc-top"><h3>Production</h3><b>Quote<small></small></b></div><p>Beats and full production, built with you.</p><a class="btn ghost svc-wa" href="#" data-wa="prod" target="_blank" rel="noopener">Enquire on WhatsApp</a></article><article class="svc-card"><div class="svc-top"><h3>Photo &amp; video</h3><b>Quote<small></small></b></div><p>Shoots and visuals from photographers and videographers in the TAB network.</p><a class="btn ghost svc-wa" href="#" data-wa="photo" target="_blank" rel="noopener">Enquire on WhatsApp</a></article>
+<article class="svc-card"><div class="svc-top"><h3>Mixing</h3><b>£100<small>/track</small></b></div><p>A full mix from your stems, with two rounds of changes.</p><a class="btn ghost svc-wa" href="#" data-wa="mix" target="_blank" rel="noopener">Book now</a></article><article class="svc-card"><div class="svc-top"><h3>Mix &amp; master</h3><b>£125<small>/track</small></b></div><p>Mix plus a streaming-ready master, two rounds of changes.</p><a class="btn ghost svc-wa" href="#" data-wa="mixmaster" target="_blank" rel="noopener">Book now</a></article><article class="svc-card"><div class="svc-top"><h3>Mastering</h3><b>£50<small>/track</small></b></div><p>A streaming-ready master from your final mix.</p><a class="btn ghost svc-wa" href="#" data-wa="master" target="_blank" rel="noopener">Book now</a></article><article class="svc-card"><div class="svc-top"><h3>Production</h3><b>Quote<small></small></b></div><p>Beats and full production, built with you.</p><a class="btn ghost svc-wa" href="#" data-wa="prod" target="_blank" rel="noopener">Book now</a></article><article class="svc-card"><div class="svc-top"><h3>Photo &amp; video</h3><b>Quote<small></small></b></div><p>Shoots and visuals from photographers and videographers in the TAB network.</p><a class="btn ghost svc-wa" href="#" data-wa="photo" target="_blank" rel="noopener">Book now</a></article>
 </div>
 </div></section>
 <section class="s" id="subscribe"><div class="wrap"><div class="sub">
@@ -746,11 +746,11 @@ const fmt = s => new Date(s + 'T12:00:00').toLocaleDateString('en-GB', { day: 'n
   const wa = t => 'https://wa.me/' + CONFIG.WHATSAPP + '?text=' + encodeURIComponent(t);
   const hi = "Hi, I found The Audio Box website. ";
   const MSG = {
-    mix: "I'd like to enquire about mixing (£100 per track). Number of tracks: \nLink to my music: ",
-    mixmaster: "I'd like to enquire about mix & master (£125 per track). Number of tracks: \nLink to my music: ",
-    master: "I'd like to enquire about mastering (£50 per track). Number of tracks: \nLink to my music: ",
-    prod: "I'd like to talk about production. What I'm working on: ",
-    photo: "I'd like to enquire about a photographer / videographer. What it's for: \nDate: \nWhere: "
+    mix: "I'd like to book mixing (£100 per track). Number of tracks: \nLink to my music: ",
+    mixmaster: "I'd like to book mix & master (£125 per track). Number of tracks: \nLink to my music: ",
+    master: "I'd like to book mastering (£50 per track). Number of tracks: \nLink to my music: ",
+    prod: "I'd like to book production. What I'm working on: ",
+    photo: "I'd like to book a photographer / videographer. What it's for: \nDate: \nWhere: "
   };
   document.querySelectorAll('[data-wa]').forEach(a => a.href = wa(hi + (MSG[a.dataset.wa] || '')));
   const f = document.getElementById('studioForm'); if (!f) return;
