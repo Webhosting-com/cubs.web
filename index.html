@@ -618,13 +618,13 @@ nav.main a.cur{color:var(--ink)}
 </div></div></section>
 
 <section class="s" id="services"><div class="wrap">
-<div class="sh"><h2>Services</h2><p>Book straight on WhatsApp. We reply with prices and times. Recording every month? <a href="#artistDev" class="svc-jump">Artist development</a> is coming soon. Join the waitlist.</p></div>
+<div class="sh"><h2>Services</h2><p>Book straight on WhatsApp. We reply with prices and times. Recording every month? <a href="#artistDev" class="svc-jump">Artist development</a> is our best-value package, with only 2 places at a time.</p></div>
 <div class="svc-grid">
-<article class="svc-card svc-dev" id="artistDev"><span class="svc-pop">Coming soon</span>
-<div class="svc-top"><div><span class="svc-tag">Monthly package · limited places</span><h3>Artist development</h3></div><b>Waitlist<small>open</small></b></div>
-<p>For artists ready to put in consistent work. Every month: regular studio time, finished music and the content to show it off, with the TAB team behind you. Places will be limited, so join the waitlist and we'll message you first when it opens.</p>
-<ul class="svc-list"><li>Monthly studio time</li><li>A mix &amp; master every month</li><li>Behind-the-scenes content</li><li>Edited press photos</li></ul>
-<a class="btn svc-wa svc-big" href="#" data-wa="dev" target="_blank" rel="noopener">Join the waitlist</a>
+<article class="svc-card svc-dev" id="artistDev"><span class="svc-pop">Best value · 2 places</span>
+<div class="svc-top"><div><span class="svc-tag">Monthly package · <span style="white-space:nowrap">3-month minimum</span></span><h3>Artist development</h3></div><b>£300<small>/month</small></b></div>
+<p>For artists ready to put in consistent work. Every month you get studio time, a finished track and press photos to show it off, with the TAB team behind you. We only take 2 artists at a time so every one gets proper attention.</p>
+<ul class="svc-list"><li>1 × 4-hour studio session</li><li>1 mix &amp; master</li><li>5 edited press photos</li><li>Only 2 artists at a time</li></ul>
+<a class="btn svc-wa svc-big" href="#" data-wa="dev" target="_blank" rel="noopener">Apply for a place</a>
 </article>
 <article class="svc-card svc-book" id="studioBook">
 <div class="svc-top"><h3>Studio session</h3></div>
@@ -641,7 +641,7 @@ nav.main a.cur{color:var(--ink)}
 <div class="field"><label>Anything else? <span class="optl">(optional)</span></label>
 <div class="sb-extras"><label class="chip"><input type="checkbox" value="Mixing"><span class="box" aria-hidden="true"></span><span>Mixing</span></label><label class="chip"><input type="checkbox" value="Mastering"><span class="box" aria-hidden="true"></span><span>Mastering</span></label><label class="chip"><input type="checkbox" value="Mix &amp; master"><span class="box" aria-hidden="true"></span><span>Mix &amp; master</span></label><label class="chip"><input type="checkbox" value="Production"><span class="box" aria-hidden="true"></span><span>Production</span></label><label class="chip"><input type="checkbox" value="Photographer"><span class="box" aria-hidden="true"></span><span>Photographer</span></label><label class="chip"><input type="checkbox" value="Videographer"><span class="box" aria-hidden="true"></span><span>Videographer</span></label></div></div>
 <div class="field"><label for="sbNotes">Notes <span class="optl">(optional)</span></label><input id="sbNotes" placeholder="Times that suit you, a link to your music, anything we should know"></div>
-<p class="sb-tip">Recording regularly? Our monthly <a href="#artistDev">Artist development</a> package is coming soon. Join the waitlist.</p>
+<p class="sb-tip">Recording regularly? <a href="#artistDev">Artist development</a> gives you a 4-hour session, a mix &amp; master and 5 press photos every month for £300.</p>
 <button class="btn" type="submit">Book on WhatsApp</button>
 </form>
 </article>
@@ -653,7 +653,7 @@ nav.main a.cur{color:var(--ink)}
 <li><b>Deposit:</b> a 50% deposit, paid by the payment link we send you, confirms your booking. The rest is due on the day or before files are delivered.</li>
 <li><b>Moving or cancelling:</b> give us at least 48 hours' notice and we'll move your booking or refund the deposit. With less notice, the deposit is kept.</li>
 <li><b>Changes to mixes and masters:</b> one round of changes is included. A round is one set of notes sent together. Extra rounds are £25 each. New parts, re-recorded vocals or a different beat count as a new mix.</li>
-<li><b>Artist development:</b> when it opens, it will run on a 3-month minimum.</li>
+<li><b>Artist development:</b> £300 a month on a 3-month minimum. Places are limited to 2 artists at a time.</li>
 </ul></div>
 </div></section>
 <section class="s" id="subscribe"><div class="wrap"><div class="sub">
@@ -832,7 +832,7 @@ const fmt = s => new Date(s + 'T12:00:00').toLocaleDateString('en-GB', { day: 'n
   const wa = t => 'https://wa.me/' + CONFIG.WHATSAPP + '?text=' + encodeURIComponent(t);
   const hi = "Hi, I found The Audio Box website. ";
   const MSG = {
-    dev: "I'd like to join the waitlist for the artist development package. A bit about me and my music: \nLink to my music: ",
+    dev: "I'd like to apply for a place on the artist development package (£300 per month, 3-month minimum). A bit about me and my music: \nLink to my music: ",
     mix: "I'd like to book mixing (£100 per track). Number of tracks: \nLink to my music: ",
     mixmaster: "I'd like to book mix & master (£125 per track). Number of tracks: \nLink to my music: ",
     master: "I'd like to book mastering (£50 per track). Number of tracks: \nLink to my music: ",
