@@ -308,7 +308,7 @@ Finishing the song is half the job. Plan the release so it gets heard.
 
 ## 4 to 6 weeks before
 - Final master approved, and artwork at 3000 x 3000 px (JPG or PNG, no blurry text).
-- Choose a distributor (for example DistroKid, TuneCore, Amuse or CD Baby; all charge a fee) and upload with a release date at least 3 to 4 weeks away.
+- Choose a distributor (for example DistroKid, TuneCore, Amuse or CD Baby) and upload with a release date at least 3 to 4 weeks away.
 - Fill in the metadata carefully: song title, artist names, featured artists, writers, producers, genre, explicit tag.
 - Make sure you have, or are given, an ISRC code for the track.
 
