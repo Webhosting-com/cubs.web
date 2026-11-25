@@ -408,7 +408,7 @@ nav.main a.cur{color:var(--ink)}
 
 /* gallery captions: studio + location on hover */
 .gal .frame{position:relative}
-.studio-logos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:28px}
+.studio-logos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:28px}
 .sl{border:1px solid var(--line);border-radius:12px;padding:22px 18px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;background:var(--panel)}
 a.sl{text-decoration:none;transition:border-color .2s,transform .2s}a.sl:hover{border-color:var(--accent);transform:translateY(-2px)}.sl-go{margin-top:6px;color:var(--muted);font-size:12px;font-weight:600}a.sl:hover .sl-go{color:var(--ink)}
 .demo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
@@ -423,7 +423,7 @@ a.sl{text-decoration:none;transition:border-color .2s,transform .2s}a.sl:hover{b
 .sl .sl-tab{color:#0B0A09;letter-spacing:0;font-weight:400;display:flex;flex-direction:column;justify-content:center;width:64px;height:64px;background:var(--accent);color:#0B0A09;font-family:'Anton',sans-serif;text-transform:uppercase;line-height:.86;font-size:19px;padding:0 7px;text-align:left}.sl-tab small{font-size:.62em}
 .sl b{font-family:'Oswald',sans-serif;font-weight:400;font-size:17px;text-transform:uppercase;letter-spacing:.02em;color:var(--ink)}
 .sl>span{color:var(--accent);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
-@media(max-width:700px){.studio-logos{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.sl{padding:18px 10px}.sl-mark img{max-width:90px;max-height:48px}}
+@media(max-width:700px){.studio-logos{grid-template-columns:1fr 1fr;gap:8px}.sl{padding:18px 10px}.sl-mark img{max-width:130px;max-height:48px}}
 .gal.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;overflow:visible}
 .gal.grid .frame{aspect-ratio:4/5;flex:none;width:auto}
 @media(max-width:900px){.gal.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
@@ -623,6 +623,7 @@ a.sl{text-decoration:none;transition:border-color .2s,transform .2s}a.sl:hover{b
 <div class="sl"><div class="sl-mark"><span class="sl-tab"><small>The</small>Audio<br>Box</span></div><b>TAB Recording Studios</b><span>Cheltenham</span></div>
 <a class="sl" href="https://www.studio250.co.uk" target="_blank" rel="noopener"><div class="sl-mark"><img src="logos/studio250.png" alt="Studio 250" loading="lazy"></div><b>Studio 250</b><span>Forest of Dean</span><small class="sl-go">Visit site ↗</small></a>
 <a class="sl" href="https://themusicworks.org.uk" target="_blank" rel="noopener"><div class="sl-mark"><img src="logos/the-music-works.png" alt="The Music Works" loading="lazy"></div><b>The Music Works</b><span>Gloucester</span><small class="sl-go">Visit site ↗</small></a>
+<a class="sl" href="https://www.lccm.ac.uk" target="_blank" rel="noopener"><div class="sl-mark"><img src="logos/lccm.png" alt="LCCM, London College of Contemporary Music" loading="lazy"></div><b>LCCM Studio 1</b><span>South London</span><small class="sl-go">Where we study · Visit site ↗</small></a>
 </div></div></section>
 
 <section class="s" id="services"><div class="wrap">
