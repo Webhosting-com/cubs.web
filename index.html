@@ -467,7 +467,7 @@ nav.main a.cur{color:var(--ink)}
 .sb-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .sb-extras{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
 .sb-extras label{white-space:nowrap;display:inline-flex;align-items:center;gap:8px;border:1px solid #3a3631;border-radius:999px;padding:9px 14px;font-size:14px;font-weight:500;cursor:pointer;color:var(--ink)}
-.sb-extras input{width:auto;accent-color:var(--accent)}
+.enq .sb-extras input[type=checkbox]{width:18px;height:18px;min-width:18px;padding:0;margin:0;border:0;flex:none;accent-color:var(--accent)}
 .sb-extras label:has(input:checked){border-color:var(--accent);background:rgba(240,74,18,.12)}
 @media(max-width:900px){.svc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.svc-card,.svc-card:nth-child(5),.svc-card:nth-child(6){grid-column:auto}.svc-book{grid-column:1/-1}}
 @media(max-width:600px){.svc-grid{grid-template-columns:1fr}.svc-card,.svc-card:nth-child(5),.svc-card:nth-child(6){grid-column:auto}.sb-row{grid-template-columns:1fr}.svc-card{padding:20px}}
@@ -557,7 +557,7 @@ nav.main a.cur{color:var(--ink)}
 <div class="sh"><h2>Services</h2><p>Book straight on WhatsApp. We reply with prices and times.</p></div>
 <div class="svc-grid">
 <article class="svc-card svc-book" id="studioBook">
-<div class="svc-top"><h3>Studio session</h3><b>Quote</b></div>
+<div class="svc-top"><h3>Studio session</h3></div>
 <p>Recording and engineering in our studios across Cheltenham, Gloucestershire and South London. The price depends on the day, time, studio and engineer, so fill this in and we'll send a quote.</p>
 <form class="enq sb-form" id="studioForm" novalidate>
 <div class="sb-row">
@@ -576,7 +576,7 @@ nav.main a.cur{color:var(--ink)}
 <button class="btn" type="submit">Book on WhatsApp</button>
 </form>
 </article>
-<article class="svc-card"><div class="svc-top"><h3>Mixing</h3><b>£100<small>/track</small></b></div><p>A full mix from your stems, with two rounds of changes.</p><a class="btn ghost svc-wa" href="#" data-wa="mix" target="_blank" rel="noopener">Book now</a></article><article class="svc-card"><div class="svc-top"><h3>Mix &amp; master</h3><b>£125<small>/track</small></b></div><p>Mix plus a streaming-ready master, two rounds of changes.</p><a class="btn ghost svc-wa" href="#" data-wa="mixmaster" target="_blank" rel="noopener">Book now</a></article><article class="svc-card"><div class="svc-top"><h3>Mastering</h3><b>£50<small>/track</small></b></div><p>A streaming-ready master from your final mix.</p><a class="btn ghost svc-wa" href="#" data-wa="master" target="_blank" rel="noopener">Book now</a></article><article class="svc-card"><div class="svc-top"><h3>Production</h3><b>Quote<small></small></b></div><p>Beats and full production, built with you.</p><a class="btn ghost svc-wa" href="#" data-wa="prod" target="_blank" rel="noopener">Book now</a></article><article class="svc-card"><div class="svc-top"><h3>Photo &amp; video</h3><b>Quote<small></small></b></div><p>Shoots and visuals from photographers and videographers in the TAB network.</p><a class="btn ghost svc-wa" href="#" data-wa="photo" target="_blank" rel="noopener">Book now</a></article>
+<article class="svc-card"><div class="svc-top"><h3>Mixing</h3><b>£100<small>/track</small></b></div><p>A full mix from your stems, with two rounds of changes.</p><a class="btn ghost svc-wa" href="#" data-wa="mix" target="_blank" rel="noopener">Book now</a></article><article class="svc-card"><div class="svc-top"><h3>Mix &amp; master</h3><b>£125<small>/track</small></b></div><p>Mix plus a streaming-ready master, two rounds of changes.</p><a class="btn ghost svc-wa" href="#" data-wa="mixmaster" target="_blank" rel="noopener">Book now</a></article><article class="svc-card"><div class="svc-top"><h3>Mastering</h3><b>£50<small>/track</small></b></div><p>A streaming-ready master from your final mix.</p><a class="btn ghost svc-wa" href="#" data-wa="master" target="_blank" rel="noopener">Book now</a></article><article class="svc-card"><div class="svc-top"><h3>Production</h3></div><p>Beats and full production, built with you.</p><a class="btn ghost svc-wa" href="#" data-wa="prod" target="_blank" rel="noopener">Get a quote</a></article><article class="svc-card"><div class="svc-top"><h3>Photo &amp; video</h3></div><p>Shoots and visuals from photographers and videographers in the TAB network.</p><a class="btn ghost svc-wa" href="#" data-wa="photo" target="_blank" rel="noopener">Get a quote</a></article>
 </div>
 </div></section>
 <section class="s" id="subscribe"><div class="wrap"><div class="sub">
@@ -749,8 +749,8 @@ const fmt = s => new Date(s + 'T12:00:00').toLocaleDateString('en-GB', { day: 'n
     mix: "I'd like to book mixing (£100 per track). Number of tracks: \nLink to my music: ",
     mixmaster: "I'd like to book mix & master (£125 per track). Number of tracks: \nLink to my music: ",
     master: "I'd like to book mastering (£50 per track). Number of tracks: \nLink to my music: ",
-    prod: "I'd like to book production. What I'm working on: ",
-    photo: "I'd like to book a photographer / videographer. What it's for: \nDate: \nWhere: "
+    prod: "I'd like a quote for production. What I'm working on: ",
+    photo: "I'd like a quote for a photographer / videographer. What it's for: \nDate: \nWhere: "
   };
   document.querySelectorAll('[data-wa]').forEach(a => a.href = wa(hi + (MSG[a.dataset.wa] || '')));
   const f = document.getElementById('studioForm'); if (!f) return;
