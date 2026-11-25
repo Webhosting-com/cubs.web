@@ -1,10 +1,12 @@
 """Add a spotlight and/or blog post to index.html.
 python3 tools/add_to_site.py spotlight spot.json   -> appends to SPOTLIGHTS
-  spot.json: {"name","handle" (no @),"bio","photo" and "photo2" (data:image/... URL or path to a jpg; give both so both frames fill),"pos":"50% 30%","pos2",
+  spot.json: {"name","handle" (no @),"bio","photo" and "photo2" (data:image/... URL or path to a jpg; give both so both frames fill; saved to img/ as files),"pos":"50% 30%","pos2",
               "release": {"url","verb","title","by"} or null}
 python3 tools/add_to_site.py post post.json        -> adds to the top of POSTS
   post.json: {"title","date":"YYYY-MM-DD","tag","excerpt","url"}"""
-import sys, json, base64, os
+import sys, json, base64, os, io, hashlib
+from PIL import Image, ImageOps
+ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
 P = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'index.html')
 s = open(P, encoding='utf-8').read()
 kind, f = sys.argv[1], sys.argv[2]
@@ -12,7 +14,13 @@ d = json.load(open(f, encoding='utf-8'))
 J = lambda v: json.dumps(v, ensure_ascii=False)
 if kind == 'spotlight':
     def img(ph):
-        return ph if ph.startswith('data:') else 'data:image/jpeg;base64,' + base64.b64encode(open(ph, 'rb').read()).decode()
+        raw = base64.b64decode(ph.split(',', 1)[1]) if ph.startswith('data:') else open(ph, 'rb').read()
+        im = ImageOps.exif_transpose(Image.open(io.BytesIO(raw))).convert('RGB'); im.thumbnail((1600, 1600))
+        rel = 'img/' + hashlib.sha1(raw).hexdigest()[:12] + '.jpg'
+        os.makedirs(os.path.join(ROOT, 'img'), exist_ok=True)
+        im.save(os.path.join(ROOT, rel), quality=82, optimize=True, progressive=True)
+        print('saved', rel)
+        return rel
     phs = [(img(d['photo']), d.get('pos', '50% 30%'))]
     if d.get('photo2'): phs.append((img(d['photo2']), d.get('pos2', d.get('pos', '50% 30%'))))
     else: print('WARNING: only one photo given, second frame will be empty', file=sys.stderr)
