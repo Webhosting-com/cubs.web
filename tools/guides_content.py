@@ -213,7 +213,7 @@ Studio time goes fast. A little preparation means more of it is spent creating.
 - You'll get your recorded files, labelled and ready to mix.
 - Book your mix and master, or the next session, straight away while the song is fresh.
 
-> Booking regular sessions? Artist development gives you two 4-hour studio blocks every month.
+> Recording regularly? Our monthly Artist development package is coming soon. Ask us on WhatsApp to join the waitlist.
 '''),
 
 dict(slug='preparing-your-mix-for-mastering', title='Preparing your mix for mastering', cat='Mastering', mins=4,
