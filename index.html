@@ -717,7 +717,6 @@ const TEAM = [];
 const CONFIG = {
   NEWSLETTER_URL: 'https://audios-newsletter.beehiiv.com',   // your beehiiv publication. Sign-up = this + /subscribe
   INSTAGRAM_URL: 'https://instagram.com/theaudiobox_',
-  CUBS_INSTAGRAM_URL: 'https://instagram.com/cubs.x',
   WHATSAPP: '447346791576',                                   // enquiries go here (digits only)
   ENQUIRY_TEXT: "Hi, I found you through The Audio Box. I'd like to ask about: "
 };
@@ -726,51 +725,6 @@ const CONFIG = {
 // { title: 'Post title', date: '2026-11-20', tag: 'Blog', excerpt: 'One line about it', url: 'link to the post on beehiiv' }
 const POSTS = [
   { title: 'Welcome to The Audio Box', date: '2026-11-17', tag: 'Launch', excerpt: "What The Audio Box is, who it's for and what lands in your inbox every Friday.", url: 'https://audios-newsletter.beehiiv.com/p/welcome-to-the-audio-box' },
-];
-
-// Earlier personal post (not shown on the TAB site). Kept for reference.
-const FOUNDER_STORY = [
-  {
-    id: 'still-becoming',
-    title: "A Work in Progress.",
-    date: '2026-11-06',
-    tag: 'Blog',
-    excerpt: "Chasing your dreams isn't quite what it's made out to be.",
-    cover: 'img/1a6f85d3acc3.jpg',                       // optional banner photo (card thumbnail + top of the article)
-    coverPos: '50% 20%',
-    gallery: ['img/83c512d6ec00.jpg', 'img/ffa6ffc537da.jpg', 'img/02750dcd2274.jpg'],   // optional photos shown at the end of the article
-    body: [
-      "Chasing your dreams isn't quite what it's made out to be.",
-      "Nobody tells you about the wrong turns, sleepless nights, ideas that never materialise or the countless moments spent picking yourself back up and finding another way forward.",
-      "But perhaps that's where the beauty lies.",
-      "Because the journey is rarely straightforward, and sometimes the most meaningful progress happens long before anyone else can see it.",
-      "I'm still creating, still learning and still discovering what I'm capable of. And for the first time in a long time, I'm genuinely excited about where life might lead.",
-      { h: "The long way round" },
-      "Music has lived in my head and heart for as long as I can remember. As a child, I'd hear harmonies beyond the record and melodies others seemed to miss. Without realising it, I was discovering something of my own.",
-      "Growing up wasn't always easy, and somewhere along the way, I lost the confidence to pursue that gift. Yet music never really left. Through lessons, songwriting, performing and eventually working with young people in studios, I continually found my way back.",
-      "Music, however, is only one part of the story.",
-      "Over the years, I've pursued countless ideas, built ventures, explored opportunities and thrown myself into experiences that have shaped the person I am today. Some became incredible experiences; others provided lessons I couldn't have learned any other way. From community work and mentoring to entrepreneurship and creative projects, I've rarely been short of something to pursue.",
-      "Not everything has worked out, but almost everything has taught me something.",
-      "By 19, I was a father of two. It changed my perspective entirely. My ambitions grew, but so did my understanding of responsibility and what it means to build something that lasts. I want my family to see what it looks like to believe in something, work towards it and remain committed when the road becomes difficult.",
-      "Perhaps that's what has kept me moving. The desire to create a life that means something, not just for myself, but for the people I love.",
-      { h: "The next chapter" },
-      "At 25, I feel I'm beginning to understand the direction I want my life to take.",
-      "I'm studying, making music, looking after my body and showing up for my family. I'm learning that ambition means very little without direction, and that sometimes moving forward requires being more intentional about where your energy goes.",
-      "I want to become a great artist. To make a living through music, collaborate with other creatives, perform, write and contribute something meaningful to the world. More than anything, I want the freedom to build a life around something I've felt connected to for as long as I can remember.",
-      "I know there's a considerable amount of work ahead. The next three years are about learning, developing my craft, building relationships and establishing foundations. About embracing opportunities, creating others and becoming better at what I do.",
-      "Beyond that, I'm giving myself permission to dream without limits.",
-      "I don't have every answer, nor do I need to. By God's grace, I'm grateful for where I am, hopeful about where I'm going and increasingly comfortable with the fact that the journey is still unfolding.",
-      { h: "AZACUB" },
-      "AZACUB is my attempt to document the person I'm becoming.",
-      "A public journal of the journey: the music, ventures, ideas, setbacks, lessons and everything in between. Not a highlight reel or the story of someone who's already made it, but an honest account of someone working towards a life they've always imagined.",
-      "I want people to discover the person behind the music, follow the process and perhaps find something in my journey that encourages them in theirs.",
-      "I'm not writing because I've figured life out. I'm writing because I'm still figuring it out. Because there's something exciting about not knowing exactly where you'll end up, but having enough belief to keep moving towards it.",
-      "There's a lot I've experienced, a lot I've learned and an awful lot more I want to explore.",
-      "This is not a declaration of success, but a statement of intent. A starting point, a record of growth and a reminder that there's always more to become.",
-      "I'm not finished. Not even close.",
-      "Written as a cub. A work in progress."
-    ]
-  }
 ];
 
 // Artist spotlights, in order. Fill in a slot by adding name, handle, bio and up to two photos.
@@ -796,7 +750,6 @@ const SPOTLIGHTS = [
 document.querySelectorAll('[data-insta]').forEach(a => a.href = CONFIG.INSTAGRAM_URL);
 document.querySelectorAll('[data-news]').forEach(a => a.href = CONFIG.NEWSLETTER_URL + '/subscribe');
 document.querySelectorAll('[data-news-home]').forEach(a => a.href = CONFIG.NEWSLETTER_URL);
-document.querySelectorAll('[data-cubs]').forEach(a => a.href = CONFIG.CUBS_INSTAGRAM_URL);
 document.querySelectorAll('[data-enquire]').forEach(a => a.href = 'https://wa.me/' + CONFIG.WHATSAPP + '?text=' + encodeURIComponent(CONFIG.ENQUIRY_TEXT));
 
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
