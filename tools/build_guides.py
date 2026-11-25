@@ -139,7 +139,7 @@ os.makedirs(os.path.join(ROOT, 'guides'), exist_ok=True)
 for g in GUIDES:
     others = [o for o in GUIDES if o['slug'] != g['slug']][:6]
     more = ''.join('<li><a href="%s.html"><small>%s</small>%s</a></li>' % (o['slug'], E(o['cat']), E(o['title'])) for o in others)
-    wa = E(WA + urllib.parse.quote('Hi, I found The Audio Box website. I read the "%s" guide and have a question: ' % g['title']))
+    wa = E(WA + urllib.parse.quote('Hi, I found The Audio Box website. I read the "%s" guide and have a question: \n\n(Ref: guide / %s)' % (g['title'], g['slug'])))
     full = md(g['body']); i = [m.start() for m in re.finditer('<h2>', full)]
     cut = i[1] if len(i) > 1 else (i[0] if i else len(full))
     pv, rt = full[:cut], full[cut:]

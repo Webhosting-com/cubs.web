@@ -410,6 +410,14 @@ nav.main a.cur{color:var(--ink)}
 .gal .frame{position:relative}
 .studio-logos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:28px}
 .sl{border:1px solid var(--line);border-radius:12px;padding:22px 18px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;background:var(--panel)}
+a.sl{text-decoration:none;transition:border-color .2s,transform .2s}a.sl:hover{border-color:var(--accent);transform:translateY(-2px)}.sl-go{margin-top:6px;color:var(--muted);font-size:12px;font-weight:600}a.sl:hover .sl-go{color:var(--ink)}
+.demo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.demo{border:1px solid var(--line);border-radius:16px;padding:22px;background:var(--panel)}
+.demo h3{font-family:'Oswald',sans-serif;font-weight:400;text-transform:uppercase;font-size:22px;margin:0 0 2px}.demo .dm{color:var(--muted);font-size:13px;margin:0 0 16px}
+.ab{display:inline-flex;border:1px solid #3a3631;border-radius:999px;padding:3px;margin-bottom:14px}.ab button{background:none;border:0;color:var(--muted);font:700 12px Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:999px;cursor:pointer}.ab button.on{background:var(--accent);color:#0B0A09}
+.dp{display:flex;align-items:center;gap:12px}.dp .pp{width:44px;height:44px;flex:none;border-radius:50%;border:0;background:var(--ink);color:#0B0A09;font-size:15px;cursor:pointer}.dp .bar{flex:1;height:6px;background:#2a2724;border-radius:6px;cursor:pointer;position:relative}.dp .bar i{position:absolute;left:0;top:0;bottom:0;background:var(--accent);border-radius:6px;width:0}.dp time{font-size:12px;color:var(--muted);min-width:38px;text-align:right}
+.rev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.rev{border:1px solid var(--line);border-radius:16px;padding:24px;background:var(--panel);margin:0}.rev blockquote{margin:0 0 16px;font-size:17px;line-height:1.6;color:#e6e0d6}.rev blockquote::before{content:"\201C";display:block;font-family:'Anton',sans-serif;font-size:44px;line-height:.6;color:var(--accent);margin-bottom:8px}.rev figcaption b{display:block;font-family:'Oswald',sans-serif;font-weight:400;text-transform:uppercase;font-size:17px}.rev figcaption span{color:var(--accent);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
 .sl-mark{height:72px;display:flex;align-items:center;justify-content:center;margin-bottom:10px}
 .sl-mark img{max-height:60px;max-width:170px;width:auto;height:auto;opacity:.92}
 .sl .sl-tab{color:#0B0A09;letter-spacing:0;font-weight:400;display:flex;flex-direction:column;justify-content:center;width:64px;height:64px;background:var(--accent);color:#0B0A09;font-family:'Anton',sans-serif;text-transform:uppercase;line-height:.86;font-size:19px;padding:0 7px;text-align:left}.sl-tab small{font-size:.62em}
@@ -613,8 +621,8 @@ nav.main a.cur{color:var(--ink)}
 </div>
 <div class="studio-logos" aria-label="Studios we work in">
 <div class="sl"><div class="sl-mark"><span class="sl-tab"><small>The</small>Audio<br>Box</span></div><b>TAB Recording Studios</b><span>Cheltenham</span></div>
-<div class="sl"><div class="sl-mark"><img src="logos/studio250.png" alt="Studio 250" loading="lazy"></div><b>Studio 250</b><span>Forest of Dean</span></div>
-<div class="sl"><div class="sl-mark"><img src="logos/the-music-works.png" alt="The Music Works" loading="lazy"></div><b>The Music Works</b><span>Gloucester</span></div>
+<a class="sl" href="https://www.studio250.co.uk" target="_blank" rel="noopener"><div class="sl-mark"><img src="logos/studio250.png" alt="Studio 250" loading="lazy"></div><b>Studio 250</b><span>Forest of Dean</span><small class="sl-go">Visit site ↗</small></a>
+<a class="sl" href="https://themusicworks.org.uk" target="_blank" rel="noopener"><div class="sl-mark"><img src="logos/the-music-works.png" alt="The Music Works" loading="lazy"></div><b>The Music Works</b><span>Gloucester</span><small class="sl-go">Visit site ↗</small></a>
 </div></div></section>
 
 <section class="s" id="services"><div class="wrap">
@@ -655,6 +663,14 @@ nav.main a.cur{color:var(--ink)}
 <li><b>Changes to mixes and masters:</b> one round of changes is included. A round is one set of notes sent together. Extra rounds are £25 each. New parts, re-recorded vocals or a different beat count as a new mix.</li>
 <li><b>Artist development:</b> £300 a month on a 3-month minimum, paid monthly in advance. Unused studio time doesn't roll over to the next month. Availability is limited. When it's full, you can join the waiting list and we'll message you when a place opens.</li>
 </ul></div>
+</div></section>
+<section class="s" id="hear" hidden><div class="wrap">
+<div class="sh"><h2>Hear the difference</h2><p>Real tracks we've mixed. Press play, then switch between before and after.</p></div>
+<div class="demo-grid" id="demoList"></div>
+</div></section>
+<section class="s" id="reviews" hidden><div class="wrap">
+<div class="sh"><h2>What artists say</h2></div>
+<div class="rev-grid" id="reviewList"></div>
 </div></section>
 <section class="s" id="subscribe"><div class="wrap"><div class="sub">
 <span class="eyebrow">The TAB mailing list</span>
@@ -721,6 +737,27 @@ const CONFIG = {
   ENQUIRY_TEXT: "Hi, I found you through The Audio Box. I'd like to ask about: "
 };
 
+// BEFORE / AFTER MIXES. The section appears once there's at least one. Put the audio files in the audio/ folder (MP3).
+// { title: 'Song name', artist: 'Artist', service: 'Mix & master', before: 'audio/song-before.mp3', after: 'audio/song-after.mp3' }
+const MIX_DEMOS = [];
+
+// TESTIMONIALS. The section appears once there's at least one.
+// { quote: 'What they said', name: 'Artist name', service: 'Mix & master' }
+const TESTIMONIALS = [];
+
+// ---------- where enquiries come from ----------
+// Ads and links can add ?src=name (or utm_campaign / utm_source) to the URL. It's remembered for the visit
+// and added to the end of every WhatsApp message, e.g. "(Ref: studio-ad-glos / studio)".
+const TAB_SRC = (function () {
+  const q = new URLSearchParams(location.search);
+  let s = q.get('src') || q.get('utm_campaign') || q.get('utm_source') || '';
+  try { if (s) sessionStorage.setItem('tab_src', s); else s = sessionStorage.getItem('tab_src') || ''; } catch (e) {}
+  if (!s && document.referrer && !document.referrer.includes(location.host)) { try { s = new URL(document.referrer).hostname.replace(/^www\./, ''); } catch (e) {} }
+  return (s || 'website').replace(/[^\w.-]/g, '').slice(0, 40) || 'website';
+})();
+const tabRef = where => '\n\n(Ref: ' + TAB_SRC + ' / ' + where + ')';
+
+
 // THE BLOG. Newest first. Add one each Friday after it goes out on beehiiv:
 // { title: 'Post title', date: '2026-11-20', tag: 'Blog', excerpt: 'One line about it', url: 'link to the post on beehiiv' }
 const POSTS = [
@@ -750,7 +787,7 @@ const SPOTLIGHTS = [
 document.querySelectorAll('[data-insta]').forEach(a => a.href = CONFIG.INSTAGRAM_URL);
 document.querySelectorAll('[data-news]').forEach(a => a.href = CONFIG.NEWSLETTER_URL + '/subscribe');
 document.querySelectorAll('[data-news-home]').forEach(a => a.href = CONFIG.NEWSLETTER_URL);
-document.querySelectorAll('[data-enquire]').forEach(a => a.href = 'https://wa.me/' + CONFIG.WHATSAPP + '?text=' + encodeURIComponent(CONFIG.ENQUIRY_TEXT));
+document.querySelectorAll('[data-enquire]').forEach(a => a.href = 'https://wa.me/' + CONFIG.WHATSAPP + '?text=' + encodeURIComponent(CONFIG.ENQUIRY_TEXT + tabRef('enquiry')));
 
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const fmt = s => new Date(s + 'T12:00:00').toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
@@ -792,7 +829,7 @@ const fmt = s => new Date(s + 'T12:00:00').toLocaleDateString('en-GB', { day: 'n
     prod: "I'd like a quote for production. What I'm working on: ",
     photo: "I'd like a quote for a photographer / videographer. What it's for: \nDate: \nWhere: "
   };
-  document.querySelectorAll('[data-wa]').forEach(a => a.href = wa(hi + (MSG[a.dataset.wa] || '')));
+  document.querySelectorAll('[data-wa]').forEach(a => a.href = wa(hi + (MSG[a.dataset.wa] || '') + tabRef(a.dataset.wa)));
   const f = document.getElementById('studioForm'); if (!f) return;
   const $ = id => document.getElementById(id), v = id => ($(id).value || '').trim();
   const d = $('sbDate'); d.min = new Date().toISOString().slice(0, 10);
@@ -811,9 +848,43 @@ const fmt = s => new Date(s + 'T12:00:00').toLocaleDateString('en-GB', { day: 'n
       'Based in: ' + v('sbWhere'),
       'Also need: ' + (extras.length ? extras.join(', ') : 'nothing else for now'),
       v('sbNotes') ? 'Notes: ' + v('sbNotes') : ''
-    ].filter((l, i) => l || i === 1).join('\n');
+    ].filter((l, i) => l || i === 1).join('\n') + tabRef('studio');
     window.open(wa(msg), '_blank', 'noopener');
   });
+})();
+
+// ---------- before / after + testimonials ----------
+(function () {
+  const esc = t => String(t).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const fmt = t => isFinite(t) ? Math.floor(t / 60) + ':' + String(Math.floor(t % 60)).padStart(2, '0') : '0:00';
+  if (MIX_DEMOS.length) {
+    const list = document.getElementById('demoList'), all = [];
+    MIX_DEMOS.forEach(d => {
+      const el = document.createElement('article'); el.className = 'demo';
+      el.innerHTML = `<h3>${esc(d.title)}</h3><p class="dm">${esc(d.artist || '')}${d.service ? ' · ' + esc(d.service) : ''}</p>
+        <div class="ab" role="group" aria-label="Before or after"><button type="button" class="on" data-v="before">Before</button><button type="button" data-v="after">After</button></div>
+        <div class="dp"><button type="button" class="pp" aria-label="Play">▶</button><div class="bar" aria-label="Seek"><i></i></div><time>0:00</time></div>`;
+      const a = { before: new Audio(d.before), after: new Audio(d.after) }; let cur = 'before';
+      Object.values(a).forEach(x => x.preload = 'metadata');
+      const pp = el.querySelector('.pp'), bar = el.querySelector('.bar'), fill = bar.querySelector('i'), tm = el.querySelector('time');
+      const stop = () => { a.before.pause(); a.after.pause(); pp.textContent = '▶'; pp.setAttribute('aria-label', 'Play'); };
+      all.push(stop);
+      pp.onclick = () => { const p = a[cur]; if (p.paused) { all.forEach(f => f()); p.play(); pp.textContent = '❚❚'; pp.setAttribute('aria-label', 'Pause'); } else stop(); };
+      el.querySelectorAll('.ab button').forEach(b => b.onclick = () => {
+        if (b.dataset.v === cur) return; const was = a[cur], playing = !was.paused, t = was.currentTime;
+        was.pause(); cur = b.dataset.v; const n = a[cur]; try { n.currentTime = t; } catch (e) {} if (playing) n.play();
+        el.querySelectorAll('.ab button').forEach(x => x.classList.toggle('on', x === b));
+      });
+      Object.values(a).forEach(x => { x.ontimeupdate = () => { if (x !== a[cur]) return; fill.style.width = (x.currentTime / (x.duration || 1) * 100) + '%'; tm.textContent = fmt(x.currentTime); }; x.onended = stop; });
+      bar.onclick = e => { const x = a[cur], r = bar.getBoundingClientRect(); if (x.duration) x.currentTime = (e.clientX - r.left) / r.width * x.duration; };
+      list.appendChild(el);
+    });
+    document.getElementById('hear').hidden = false;
+  }
+  if (TESTIMONIALS.length) {
+    document.getElementById('reviewList').innerHTML = TESTIMONIALS.map(t => `<figure class="rev"><blockquote>${esc(t.quote)}</blockquote><figcaption><b>${esc(t.name)}</b>${t.service ? `<span>${esc(t.service)}</span>` : ''}</figcaption></figure>`).join('');
+    document.getElementById('reviews').hidden = false;
+  }
 })();
 
 // ---------- get featured form -> email ----------
