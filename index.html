@@ -44,8 +44,12 @@ nav.main a:hover{color:var(--ink)}
 .btn svg{width:16px;height:16px}
 
 /* hero */
-.hero{position:relative;padding:110px 0 96px;overflow:hidden;min-height:640px;display:flex;align-items:center;background:#0B0A09 url(tab-backdrop.jpg) right center/cover no-repeat}
-.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,10,9,.94) 0%,rgba(11,10,9,.72) 48%,rgba(11,10,9,.28) 100%),linear-gradient(180deg,rgba(11,10,9,0) 65%,#0B0A09 100%)}
+.hero{position:relative;padding:110px 0 96px;overflow:hidden;min-height:640px;display:flex;align-items:center;background:#0B0A09}
+.hero-bg{position:absolute;inset:0;background:url(hero-keys.jpg) center 38%/cover no-repeat;opacity:.32;filter:grayscale(.35)}
+.hero-logo{position:absolute;z-index:2;right:max(40px,calc((100vw - 1140px)/2));top:50%;transform:translateY(-50%);width:clamp(180px,22vw,300px);aspect-ratio:1;overflow:hidden;white-space:nowrap;background:var(--accent);color:#0B0A09;display:flex;flex-direction:column;justify-content:center;padding:0 7%;font-family:'Anton',sans-serif;text-transform:uppercase;line-height:.86;font-size:clamp(38px,5vw,72px);box-shadow:0 30px 80px rgba(0,0,0,.55)}
+.hero-logo small{font-size:.62em}
+@media(min-width:901px){.hero .wrap>div{max-width:calc(100% - clamp(200px,24vw,330px))}.hero h1{font-size:clamp(46px,8.5vw,128px)}}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(11,10,9,.85) 0%,rgba(11,10,9,.35) 60%,rgba(11,10,9,.2) 100%),linear-gradient(180deg,rgba(11,10,9,0) 65%,#0B0A09 100%)}
 .hero .wrap{position:relative;z-index:2}
 .hero h1{font-size:clamp(46px,11vw,150px);letter-spacing:.015em;line-height:.86;margin:16px 0 20px}
 .hero h1 span{color:var(--accent)}
@@ -140,7 +144,9 @@ footer.site .wrap{position:relative}
 
 @media(max-width:900px){
   .spot,.join{grid-template-columns:1fr;gap:36px}
-  .hero{min-height:0;padding:80px 0 70px;background-position:82% center}
+  .hero{min-height:0;padding:80px 0 70px}
+  .hero-logo{position:relative;right:auto;top:auto;transform:none;width:150px;font-size:36px;margin:0 0 26px 18px;box-shadow:0 18px 50px rgba(0,0,0,.5)}
+  .hero{flex-direction:column;align-items:stretch}
   .hero::before{background:linear-gradient(180deg,rgba(11,10,9,.55),rgba(11,10,9,.9))}
   .why{grid-template-columns:1fr}.why div{border-right:0;border-bottom:1px solid var(--line)}
   .post{grid-template-columns:1fr;gap:8px}.post .big{font-family:'Anton',sans-serif;font-size:48px;color:var(--accent);line-height:1}
@@ -476,7 +482,7 @@ nav.main a.cur{color:var(--ink)}
 <div class="drawer"><a href="#services">Services</a><a href="#blog">Blog</a><a href="#spotlight">Spotlight</a><a href="#about">About Cubs</a><a href="#subscribe">Join the mailing list</a></div></header>
 
 <main id="top">
-<section class="hero"><div class="wrap"><div>
+<section class="hero"><div class="hero-bg" aria-hidden="true"></div><div class="hero-logo" aria-hidden="true"><small>The</small>Audio<br>Box</div><div class="wrap"><div>
 <span class="eyebrow">A music network · London &amp; Gloucestershire</span>
 <h1>The Audio<br><span>Box</span></h1>
 <ul class="offer"><li>Studio &amp; Mixing</li><li>Weekly Blog</li><li>Artist Spotlights</li><li>What's Moving In Music</li></ul>
