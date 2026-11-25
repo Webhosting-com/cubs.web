@@ -79,30 +79,18 @@ article ul,article ol{{padding-left:22px}}article li{{margin:6px 0}}article li::
 .more a{{display:block;border:1px solid var(--line);border-radius:10px;padding:14px 16px;text-decoration:none;font-weight:600;background:var(--panel)}}.more a:hover{{border-color:var(--accent)}}
 .more small{{display:block;color:var(--accent);font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:2px}}
 footer{{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-size:13px}}
-.print-only{{display:none}}
 @media(max-width:600px){{.hlinks{{display:none}}.more ul{{grid-template-columns:1fr}}body{{font-size:16px}}}}
-@media print{{
-  @page{{margin:16mm}}
-  body{{background:#fff;color:#111;font-size:11.5pt;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
-  header,.no-print,.more,.cta,footer{{display:none!important}}
-  .print-only{{display:flex}}
-  .top{{padding:0 0 10px}} h1{{color:#111;font-size:36pt}} .lead{{color:#333}}
-  article{{border:0}} article p,article li{{color:#222}} article h2{{color:#111;font-size:15pt;margin-top:20px}}
-  .tip{{background:#fff4ef;color:#222}} .pill{{color:#555;border-color:#ccc}}
-}}
-.pbrand{{align-items:center;justify-content:space-between;border-bottom:3px solid #F04A12;padding-bottom:10px;margin-bottom:18px;font:600 10pt Inter,sans-serif;color:#333}}
-.pbrand .badge{{width:44px;height:44px;font-size:13px}}
+@media print{{body *{{display:none!important}}body::after{{content:"TAB guidance sheets can be read online at theaudiobox.co.uk";display:block;font:14pt Inter,sans-serif;color:#111;padding:40px}}body{{background:#fff}}}}
 </style></head>
 <body>
 <header class="no-print"><div class="wrap"><a class="logo" href="/"><span class="badge"><small>THE</small>AUDIO<br>BOX</span>The Audio Box</a>
 <nav class="hlinks"><a href="/#guides">All guides</a><a href="/#services">Services</a><a href="/#blog">Blog</a></nav></div></header>
 <main class="wrap">
-<div class="print-only pbrand"><span class="badge"><small>THE</small>AUDIO<br>BOX</span><span>TAB guidance sheet · theaudiobox.co.uk</span></div>
 <section class="top">
 <span class="eyebrow">TAB guidance sheet · {cat}</span>
 <h1>{title}</h1>
 <p class="lead">{summary}</p>
-<div class="meta"><span class="pill">{mins} min read</span><button class="btn ghost no-print" type="button" onclick="window.print()">Save as PDF / print</button></div>
+<div class="meta"><span class="pill">{mins} min read</span></div>
 </section>
 <article>
 {body}
@@ -114,7 +102,7 @@ footer{{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-
 </section>
 <section class="more"><h3>More guidance sheets</h3><ul>{more}</ul></section>
 </main>
-<footer><div class="wrap">© The Audio Box · <a href="/">theaudiobox.co.uk</a> · Free to share with credit.</div></footer>
+<footer><div class="wrap">© The Audio Box · <a href="/">theaudiobox.co.uk</a></div></footer>
 </body></html>
 '''
 
@@ -136,7 +124,7 @@ cards = ''.join(
     '<a class="guide" href="guides/%s.html" data-cat="%s"><span class="g-cat">%s · %d min</span><h3>%s</h3><p>%s</p><span class="g-go">Read the sheet →</span></a>'
     % (g['slug'], E(g['cat']), E(g['cat']), g['mins'], E(g['title']), E(g['summary'])) for g in GUIDES)
 filters = '<button type="button" class="gf on" data-f="all">All</button>' + ''.join('<button type="button" class="gf" data-f="%s">%s</button>' % (E(c), E(c)) for c in cats)
-block = '<!--GUIDES-->\n<div class="guides-head"><div><span class="eyebrow">Free from TAB</span><h3 class="guides-title">Guidance sheets</h3><p>Branded, step-by-step sheets on sending stems, bouncing files, using plug-ins and more. Read them here or save them as a PDF.</p></div></div>\n<div class="guide-filters" role="group" aria-label="Filter guides">' + filters + '</div>\n<div class="guide-grid">' + cards + '</div>\n<!--/GUIDES-->'
+block = '<!--GUIDES-->\n<div class="guides-head"><div><span class="eyebrow">Free from TAB</span><h3 class="guides-title">Guidance sheets</h3><p>Step-by-step guidance on sending stems, bouncing files, using plug-ins and more. Tap any sheet to read it.</p></div></div>\n<div class="guide-filters" role="group" aria-label="Filter guides">' + filters + '</div>\n<div class="guide-grid">' + cards + '</div>\n<!--/GUIDES-->'
 a, b = s.index('<!--GUIDES-->'), s.index('<!--/GUIDES-->') + len('<!--/GUIDES-->')
 s = s[:a] + block + s[b:]
 open(P, 'w', encoding='utf-8').write(s)

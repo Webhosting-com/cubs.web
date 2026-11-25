@@ -41,30 +41,18 @@ article ul,article ol{padding-left:22px}article li{margin:6px 0}article li::mark
 .more a{display:block;border:1px solid var(--line);border-radius:10px;padding:14px 16px;text-decoration:none;font-weight:600;background:var(--panel)}.more a:hover{border-color:var(--accent)}
 .more small{display:block;color:var(--accent);font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:2px}
 footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-size:13px}
-.print-only{display:none}
 @media(max-width:600px){.hlinks{display:none}.more ul{grid-template-columns:1fr}body{font-size:16px}}
-@media print{
-  @page{margin:16mm}
-  body{background:#fff;color:#111;font-size:11.5pt;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  header,.no-print,.more,.cta,footer{display:none!important}
-  .print-only{display:flex}
-  .top{padding:0 0 10px} h1{color:#111;font-size:36pt} .lead{color:#333}
-  article{border:0} article p,article li{color:#222} article h2{color:#111;font-size:15pt;margin-top:20px}
-  .tip{background:#fff4ef;color:#222} .pill{color:#555;border-color:#ccc}
-}
-.pbrand{align-items:center;justify-content:space-between;border-bottom:3px solid #F04A12;padding-bottom:10px;margin-bottom:18px;font:600 10pt Inter,sans-serif;color:#333}
-.pbrand .badge{width:44px;height:44px;font-size:13px}
+@media print{body *{display:none!important}body::after{content:"TAB guidance sheets can be read online at theaudiobox.co.uk";display:block;font:14pt Inter,sans-serif;color:#111;padding:40px}body{background:#fff}}
 </style></head>
 <body>
 <header class="no-print"><div class="wrap"><a class="logo" href="/"><span class="badge"><small>THE</small>AUDIO<br>BOX</span>The Audio Box</a>
 <nav class="hlinks"><a href="/#guides">All guides</a><a href="/#services">Services</a><a href="/#blog">Blog</a></nav></div></header>
 <main class="wrap">
-<div class="print-only pbrand"><span class="badge"><small>THE</small>AUDIO<br>BOX</span><span>TAB guidance sheet · theaudiobox.co.uk</span></div>
 <section class="top">
 <span class="eyebrow">TAB guidance sheet · Mixing</span>
 <h1>How to send stems</h1>
 <p class="lead">Exactly what to export and how to package it so your mix starts right first time.</p>
-<div class="meta"><span class="pill">4 min read</span><button class="btn ghost no-print" type="button" onclick="window.print()">Save as PDF / print</button></div>
+<div class="meta"><span class="pill">4 min read</span></div>
 </section>
 <article>
 <p>Stems are the separate audio files that make up your song: the beat, each vocal, each instrument. Send them right and your engineer spends the session mixing, not fixing.</p>
@@ -89,5 +77,5 @@ footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-s
 </section>
 <section class="more"><h3>More guidance sheets</h3><ul><li><a href="bouncing-and-export-settings.html"><small>Mixing</small>Bouncing &amp; export settings</a></li><li><a href="exporting-stems-in-your-daw.html"><small>Mixing</small>Exporting stems in your DAW</a></li><li><a href="using-plug-ins-the-right-way.html"><small>Production</small>Using plug-ins the right way</a></li><li><a href="gain-staging-basics.html"><small>Recording</small>Gain staging basics</a></li><li><a href="recording-vocals-at-home.html"><small>Recording</small>Recording vocals at home</a></li><li><a href="before-your-studio-session.html"><small>Sessions</small>Before your studio session</a></li></ul></section>
 </main>
-<footer><div class="wrap">© The Audio Box · <a href="/">theaudiobox.co.uk</a> · Free to share with credit.</div></footer>
+<footer><div class="wrap">© The Audio Box · <a href="/">theaudiobox.co.uk</a></div></footer>
 </body></html>
