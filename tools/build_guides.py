@@ -115,7 +115,7 @@ footer{{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-
 </article>
 <section class="cta">
 <h3>Want us to handle it?</h3>
-<p>Our engineers mix, master and record across Cheltenham, Gloucestershire and South London. Book straight on WhatsApp.</p>
+<p>Our engineers mix and master for artists wherever they're based, and run studio sessions too. Book straight on WhatsApp.</p>
 <div class="row"><a class="btn" href="/#services">See services</a><a class="btn ghost" href="{wa}" target="_blank" rel="noopener">Ask a question</a></div>
 </section>
 <section class="more"><h3>More guidance sheets</h3><ul>{more}</ul></section>
