@@ -454,7 +454,14 @@ nav.main a.cur{color:var(--ink)}
 .svc .num{color:var(--accent);font-family:'Oswald',sans-serif;font-weight:300;font-size:18px}.svc p{color:var(--muted);font-size:15px}
 /* services */
 .svc-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px}
-.svc-card{grid-column:span 2}.svc-card:nth-child(5),.svc-card:nth-child(6){grid-column:span 3}
+.svc-card{grid-column:span 2}.svc-card:nth-child(6),.svc-card:nth-child(7){grid-column:span 3}
+.svc-dev{grid-column:1/-1;border-color:var(--accent);background:linear-gradient(135deg,rgba(240,74,18,.14),var(--panel) 60%)}
+.svc-dev>p{flex:none;max-width:720px}
+.svc-tag{display:block;color:var(--accent);font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;margin-bottom:6px}
+.svc-list{list-style:none;margin:2px 0 6px;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.svc-list li{border:1px solid #3a2418;border-radius:10px;padding:14px;font-weight:600;font-size:15px;color:var(--ink);background:rgba(11,10,9,.35)}
+.svc-note{color:var(--accent)!important;font-size:13px!important;font-weight:600;flex:none!important}
+@media(max-width:900px){.svc-list{grid-template-columns:1fr 1fr}}
 .svc-card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:26px;display:flex;flex-direction:column;gap:12px}
 .svc-card>p{color:var(--muted);font-size:15px;line-height:1.55;margin:0;flex:1}
 .svc-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
@@ -473,8 +480,8 @@ nav.main a.cur{color:var(--ink)}
 .sb-extras .chip input:checked~.box::after{content:"";position:absolute;left:4px;top:1px;width:4px;height:8px;border:solid #0B0A09;border-width:0 2px 2px 0;transform:rotate(45deg)}
 .sb-extras .chip:has(input:checked){border-color:var(--accent);background:rgba(240,74,18,.12)}
 .sb-extras .chip input:focus-visible~.box{outline:2px solid var(--accent);outline-offset:2px}
-@media(max-width:900px){.svc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.svc-card,.svc-card:nth-child(5),.svc-card:nth-child(6){grid-column:auto}.svc-book{grid-column:1/-1}}
-@media(max-width:600px){.svc-grid{grid-template-columns:1fr}.svc-card,.svc-card:nth-child(5),.svc-card:nth-child(6){grid-column:auto}.sb-row{grid-template-columns:1fr}.svc-card{padding:20px}}
+@media(max-width:900px){.svc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.svc-card,.svc-card:nth-child(6),.svc-card:nth-child(7){grid-column:auto}.svc-dev{grid-column:1/-1}.svc-book{grid-column:1/-1}}
+@media(max-width:600px){.svc-grid{grid-template-columns:1fr}.svc-card,.svc-card:nth-child(6),.svc-card:nth-child(7){grid-column:auto}.svc-dev{grid-column:1/-1}.sb-row{grid-template-columns:1fr}.svc-card{padding:20px}}
 .prices{border-top:1px solid var(--line)}
 .pr{display:flex;gap:20px;justify-content:space-between;align-items:baseline;padding:20px 2px;border-bottom:1px solid var(--line)}
 .pr h3{font-family:'Oswald',sans-serif;font-weight:300;color:var(--ink);font-size:24px;letter-spacing:.02em;margin:0 0 4px}
@@ -562,7 +569,7 @@ nav.main a.cur{color:var(--ink)}
 <div class="svc-grid">
 <article class="svc-card svc-book" id="studioBook">
 <div class="svc-top"><h3>Studio session</h3></div>
-<p>Recording and engineering in our studios across Cheltenham, Gloucestershire and South London. The price depends on the day, time, studio and engineer, so fill this in and we'll send a quote.</p>
+<p>Book a session with an experienced TAB engineer in a professionally treated studio, from Cheltenham to South London. We set up and soundcheck before you arrive, so the session is spent creating. You leave with clean, well-recorded files that are ready to mix. Prices depend on the day, time, studio and engineer: fill this in and we'll send a quote.</p>
 <form class="enq sb-form" id="studioForm" novalidate>
 <div class="sb-row">
 <div class="field"><label for="sbName">Your name <span class="req">*</span></label><input id="sbName" autocomplete="name" placeholder="Artist or full name"><p class="err">Add your name.</p></div>
@@ -578,7 +585,14 @@ nav.main a.cur{color:var(--ink)}
 <button class="btn" type="submit">Book on WhatsApp</button>
 </form>
 </article>
-<article class="svc-card"><div class="svc-top"><h3>Mixing</h3><b>£100<small>/track</small></b></div><p>A full mix from your stems, with two rounds of changes.</p><a class="btn ghost svc-wa" href="#" data-wa="mix" target="_blank" rel="noopener">Book now</a></article><article class="svc-card"><div class="svc-top"><h3>Mix &amp; master</h3><b>£125<small>/track</small></b></div><p>Mix plus a streaming-ready master, two rounds of changes.</p><a class="btn ghost svc-wa" href="#" data-wa="mixmaster" target="_blank" rel="noopener">Book now</a></article><article class="svc-card"><div class="svc-top"><h3>Mastering</h3><b>£50<small>/track</small></b></div><p>A streaming-ready master from your final mix.</p><a class="btn ghost svc-wa" href="#" data-wa="master" target="_blank" rel="noopener">Book now</a></article><article class="svc-card"><div class="svc-top"><h3>Production</h3></div><p>Beats and full production, built with you.</p><a class="btn ghost svc-wa" href="#" data-wa="prod" target="_blank" rel="noopener">Get a quote</a></article><article class="svc-card"><div class="svc-top"><h3>Photo &amp; video</h3></div><p>Shoots and visuals from photographers and videographers in the TAB network.</p><a class="btn ghost svc-wa" href="#" data-wa="photo" target="_blank" rel="noopener">Get a quote</a></article>
+<article class="svc-card svc-dev">
+<div class="svc-top"><div><span class="svc-tag">Monthly retainer</span><h3>Artist development</h3></div><b>£250<small>/month</small></b></div>
+<p>For artists ready to put in consistent work. Every month you get real studio time, finished music and the content to show it off, with the TAB team behind you.</p>
+<ul class="svc-list"><li>2 × 4-hour studio blocks</li><li>1 mix &amp; master</li><li>1 behind-the-scenes reel</li><li>5 edited press photos</li></ul>
+<a class="btn svc-wa" href="#" data-wa="dev" target="_blank" rel="noopener">Book now</a>
+</article>
+
+<article class="svc-card"><div class="svc-top"><h3>Mixing</h3><b>£100<small>/track</small></b></div><p>Your song mixed so every part sits where it should, from the vocal on top to the low end. We work to your references and your vision, and one round of changes is included to get it feeling right. You get a full-quality mix you can play anywhere.</p><p class="svc-note">1 round of changes included · extra rounds £25</p><a class="btn ghost svc-wa" href="#" data-wa="mix" target="_blank" rel="noopener">Book now</a></article><article class="svc-card"><div class="svc-top"><h3>Mix &amp; master</h3><b>£125<small>/track</small></b></div><p>Our full finishing service, taking your stems to a release-ready track. We mix it to sound balanced and powerful, then master it to sit loud and clear next to the music you love on every streaming platform.</p><p class="svc-note">1 round of changes included · extra rounds £25</p><a class="btn ghost svc-wa" href="#" data-wa="mixmaster" target="_blank" rel="noopener">Book now</a></article><article class="svc-card"><div class="svc-top"><h3>Mastering</h3><b>£50<small>/track</small></b></div><p>The final polish before release. We bring your finished mix to the right volume, tighten the tone and make sure it translates on phones, car speakers, club systems and headphones. You get a master that's ready to upload.</p><p class="svc-note">1 round of changes included · extra rounds £25</p><a class="btn ghost svc-wa" href="#" data-wa="master" target="_blank" rel="noopener">Book now</a></article><article class="svc-card"><div class="svc-top"><h3>Production</h3></div><p>Beats and full productions built around your sound, not a template. Bring an idea, a voice note or a reference and we'll build it with you in the room or remotely. You keep the creative control, and we'll agree clear terms before we start.</p><a class="btn ghost svc-wa" href="#" data-wa="prod" target="_blank" rel="noopener">Get a quote</a></article><article class="svc-card"><div class="svc-top"><h3>Photo &amp; video</h3></div><p>Shoots, visuals and behind-the-scenes content from photographers and videographers in the TAB network. Whether it's cover art, press shots or a music video, we match you with the right creative and help plan the shoot so it fits your music.</p><a class="btn ghost svc-wa" href="#" data-wa="photo" target="_blank" rel="noopener">Get a quote</a></article>
 </div>
 </div></section>
 <section class="s" id="subscribe"><div class="wrap"><div class="sub">
@@ -748,6 +762,7 @@ const fmt = s => new Date(s + 'T12:00:00').toLocaleDateString('en-GB', { day: 'n
   const wa = t => 'https://wa.me/' + CONFIG.WHATSAPP + '?text=' + encodeURIComponent(t);
   const hi = "Hi, I found The Audio Box website. ";
   const MSG = {
+    dev: "I'd like to start the artist development package (£250 per month). A bit about me and my music: \nLink to my music: ",
     mix: "I'd like to book mixing (£100 per track). Number of tracks: \nLink to my music: ",
     mixmaster: "I'd like to book mix & master (£125 per track). Number of tracks: \nLink to my music: ",
     master: "I'd like to book mastering (£50 per track). Number of tracks: \nLink to my music: ",
